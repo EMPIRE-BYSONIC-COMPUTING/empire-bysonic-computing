@@ -1,0 +1,104 @@
+/* ==========================================
+   GLOBAL UTILITIES
+   ========================================== */
+.center-text {
+    text-align: center;
+}
+.white-color {
+    color: #ffffff;
+}
+
+/* ==========================================
+   PRODUCT GALLERY GRID
+   ========================================== */
+.product-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+.product-link {
+    color: rgb(219, 73, 15);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.product-link:hover {
+    color: blue;
+}
+
+/* ==========================================
+   NEON LED BUTTONS
+   ========================================== */
+.led-button {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+    padding: 3px;
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    overflow: hidden;
+    display: inline-block;
+}
+.led-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(transparent, #00f0ff, #ff007f, transparent 30%);
+    animation: rotateLED 3s linear infinite;
+}
+.led-button span {
+    position: relative;
+    display: block;
+    padding: 15px 30px;
+    background: #111111;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    z-index: 1;
+    transition: background 0.3s, color 0.3s;
+    text-align: center;
+}
+.led-button:hover span {
+    background: #1a1a1a;
+    color: blue;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+}
+@keyframes rotateLED {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ==========================================
+   GLOBAL COPYRIGHT FOOTER
+   ========================================== */
+/* ==========================================
+   GLOBAL COPYRIGHT FOOTER
+   ========================================== */
+footer {
+    display: block;
+    text-align: center;
+    padding: 40px 0 20px 0; /* Adds clear spacing above and below the text */
+    width: 100%;
+    clear: both; /* Prevents forms or side layouts from overlapping it */
+}
+
+.copyright-text {
+    /* CHANGED: Set color to a high-contrast jet black so it jumps off the grey background */
+    color: white !important; 
+    font-style: italic;
+    font-family: sans-serif;
+    font-size: 14px;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.copyright-text:hover {
+    color: blue !important; /* Forces the signature interactive blue hover highlight */
+    cursor: pointer;
+}

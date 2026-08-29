@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Repairs & Maintenance</title>
+        <link rel="stylesheet" href="style.css">
+    <style>
+        /* Base Page Styles */
+        body {
+            background-color: rgb(43, 73, 72);
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Banner Colors */
+        .amber-color {
+            background-color: #FFBF00;
+            padding: 10px;
+            color: black;
+            text-align: center;
+        }
+        
+        .beig-color {
+            background-color: beige;
+            padding: 15px;
+            text-align: center;
+            color: rgb(138, 66, 33);
+        }
+
+        /* Modern Flexbox Button Row Fixes invalid float/position rules */
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Typography & Helper Classes */
+        .white-color {
+            color: white;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        
+        .btn-classic {
+            background-color: #007bff;
+            color: #ffffff;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        /* Hover effect */
+        .btn-classic:hover {
+            background-color: #84ac15;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="amber-color">
+            <h2 style="margin: 0; text-decoration: underline;">Hardware Repair & Replacement Services</h2>
+        </div>
+        <div class="beig-color">
+            <p>This involves physical diagnostics, component-level troubleshooting, and swapping out failing parts.</p>
+            <p>Diagnostic & Stress Testing: Identifying unstable components using software loops (e.g., MemTest86 for RAM, Prime95 for CPUs, FurMark for GPUs).</p>
+            <p>Modular Component Swaps: Replacing faulty mechanical hard drives with high-speed NVMe SSDs, swapping dead power supply units (PSUs), upgrading RAM modules, and installing new motherboards.</p>
+            <p>Laptop Screen & Bezel Repairs: Sourcing and replacing cracked LCD/OLED panels, damaged digitizers, failing video cables (EDP), and broken chassis hinges. Battery & Port Replacement: Replacing degraded internal lithium-ion batteries and desoldering/resoldering damaged charging ports (USB-C, DC jacks) or audio jacks.</p>
+            <p>Micro-Soldering & Component-Level Repair: Repairing liquid-damaged logic boards by diagnosing short circuits, replacing blown capacitors, resistors, or power IC chips using a hot-air rework station.</p>
+        </div>
+    </header>
+
+    <!-- Clean, Simple Functional Row -->
+    <div class="button-group">
+        <button class="btn-classic" onclick="window.location.href='Physical Diagnostics.html';">Diagnostic Testing</button>
+        
+        <!-- Simply opens a secure standard sandboxed payment engine directly -->
+        <button class="btn-classic" style="background-color: #47f502; font-weight: bold; color: black" onclick="redirectToPayment()">💳 Pay Securely Online (Visa/Mastercard)</button>
+        
+        <button class="btn-classic" onclick="window.location.href='Hardware Repair & Quotation.html';">Get Quotation</button>
+    </div>
+
+ <footer>
+        <div class="footer-copyright">
+            &copy; 2026 Hardware Repair & Replacement Services. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        function redirectToPayment() {
+            // This forms a direct secure link payload to PayFast's standard payment box interface
+            var merchantId = '10000100'; // Standard sandbox testing merchant ID
+            var merchantKey = '46f0cd694581a';
+            var amount = '450.00';
+            var itemName = 'Hardware Repair Service';
+
+            var payfastUrl = 'https://payfast.co.za' +
+                             '?merchant_id=' + merchantId +
+                             '&merchant_key=' + merchantKey +
+                             '&amount=' + amount +
+                             '&item_name=' + encodeURIComponent(itemName);
+
+            // Opens the checkout page cleanly in a new browser tab
+            window.open(payfastUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
+<footer></footer>
+<p class="white-color copyright-text">
+    <i>&copy; 2026 EMPIRE BYSONIC COMPUTING</i>
+</p>

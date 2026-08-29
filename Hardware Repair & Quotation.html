@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empire Bysonic Computing | Small Computer & Single-Board Repair</title>
+    <link rel="stylesheet" href="style.css">
+   
+   <style>
+        :root {
+            --bg-dark: #5c0d0d;
+            --card-bg: #1e293b;
+            --accent-cyan: #06b6d4;
+            --accent-green: #10b981;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid #334155;
+        }
+
+        header h1 {
+            color: var(--accent-green);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid #334155;
+        }
+
+        h2 {
+            color: var(--accent-cyan);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        select, input, textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: #0f172a;
+            border: 1px solid #475569;
+            border-radius: 6px;
+            color: var(--text-main);
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        select:focus, input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--accent-cyan);
+            color: #0f172a;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #22d3ee;
+        }
+
+        .price-display {
+            background-color: #0f172a;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-green);
+            margin-top: 20px;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .price-row.total {
+            border-top: 1px solid #334155;
+            padding-top: 10px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--accent-green);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 15px;
+        }
+
+        .status-received { background-color: #1e3a8a; color: #93c5fd; }
+        .status-diagnosing { background-color: #78350f; color: #fde047; }
+        .status-repairing { background-color: #6b21a8; color: #f472b6; }
+        .status-ready { background-color: #064e3b; color: #6ee7b7; }
+
+        .hidden {
+            display: none;
+        }
+
+        .tracking-result {
+            margin-top: 25px;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>🔬 Empire Bysonic Computing </h1>
+            <p>SBC, Mini PC, & Small Computer Repair Services</p>
+        </header>
+
+        <div class="grid">
+            <!-- Cost Estimator Card -->
+            <div class="card">
+                <h2>🧮 Our Instant Repair Estimator</h2>
+                <div class="form-group">
+                    <label for="device-type">Device Type</label>
+                    <select id="device-type" onchange="calculateEstimate()">
+                        <option value="raspberry" data-price="250">Raspberry Pi / Single Board Computer</option>
+                        <option value="minipc" data-price="450">Intel NUC / Mini PC</option>
+                        <option value="handheld" data-price="550">Steam Deck / Handheld PC</option>
+                        <option value="itx" data-price="600">Mini-ITX Custom Desktop</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="issue-type">Primary Issue</label>
+                    <select id="issue-type" onchange="calculateEstimate()">
+                        <option value="power" data-price="150">Power Issue / Dead Board</option>
+                        <option value="port" data-price="200">Broken Port (HDMI, USB-C, RJ45)</option>
+                        <option value="thermal" data-price="100">Overheating / Thermal Throttling</option>
+                        <option value="storage" data-price="80">Storage Corruption / OS Failure</option>
+                        <option value="mainboard-diagnostics" data-price="650">Main Board Diagnostics</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="express-service" onchange="calculateEstimate()" style="width: auto; margin-right: 10px;">
+                        Express 24-Hour Turnaround (+ R150)
+                    </label>
+                </div>
+
+                <div class="price-display">
+                    <div class="price-row">
+                        <span>Base Inspection & Labor:</span>
+                        <span id="base-price">R0.00</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Component Repair Fee:</span>
+                        <span id="issue-price">R0.00</span>
+                    </div>
+                    <div class="price-row" id="express-row">
+                        <span>Express Surcharge:</span>
+                        <span id="express-price">R0.00</span>
+                    </div>
+                    <div class="price-row total">
+                        <span>Estimated Total:</span>
+                        <span id="total-price">R0.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ticket Tracking Card -->
+            <div class="card">
+                <h2>🔍 Live Repair Tracker</h2>
+                <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.9rem;">
+                    Enter your ticket number to view live repair bench updates (Try: <b>MF-8821</b> or <b>MF-4409</b>).
+                </p>
+                
+                <div class="form-group">
+                    <label for="ticket-id">Ticket Number</label>
+                    <input type="text" id="ticket-id" placeholder="e.g. MF-XXXX" style="text-transform: uppercase;">
+                </div>
+                <button onclick="trackTicket()">Track Status</button>
+
+                <div id="tracking-result" class="tracking-result hidden">
+                    <h3 id="result-device-title" style="color: var(--accent-cyan); margin-bottom: 5px;">Device Info</h3>
+                    <p id="result-issue" style="font-size: 0.9rem; color: var(--text-muted);">Issue details</p>
+                    <div id="result-status" class="status-badge">Status</div>
+                    <p id="result-notes" style="margin-top: 15px; font-style: italic; font-size: 0.95rem; border-left: 2px solid #475569; padding-left: 10px;"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const ticketDatabase = {
+            "MF-8821": {
+                device: "Raspberry Pi 4 (8GB)",
+                issue: "Broken USB-C Power Port",
+                status: "repairing",
+                statusText: "In Progress: SMT Soldering",
+                notes: "Component removed. Cleaning PCB pads. New USB-C port installation scheduled next."
+            },
+            "MF-4409": {
+                device: "ASUS ROG Ally",
+                issue: "Overheating & Thermal Throttling",
+                status: "ready",
+                statusText: "Ready for Pickup",
+                notes: "Thermal paste replaced with Honeywell PTM7950. Fans cleaned. Benchmarks passing normal temps."
+            }
+        };
+
+        function calculateEstimate() {
+            const deviceSelect = document.getElementById("device-type");
+            const issueSelect = document.getElementById("issue-type");
+            const expressCheckbox = document.getElementById("express-service");
+
+            const basePrice = parseFloat(deviceSelect.options[deviceSelect.selectedIndex].getAttribute("data-price"));
+            const issuePrice = parseFloat(issueSelect.options[issueSelect.selectedIndex].getAttribute("data-price"));
+            const expressPrice = expressCheckbox.checked ? 150 : 0;
+            const totalPrice = basePrice + issuePrice + expressPrice;
+
+            document.getElementById("base-price").innerText = "R" + basePrice.toFixed(2);
+            document.getElementById("issue-price").innerText = "R" + issuePrice.toFixed(2);
+            document.getElementById("express-price").innerText = "R" + expressPrice.toFixed(2);
+            document.getElementById("total-price").innerText = "R" + totalPrice.toFixed(2);
+        }
+
+        function trackTicket() {
+            const ticketInput = document.getElementById("ticket-id").value.trim().toUpperCase();
+            const resultDiv = document.getElementById("tracking-result");
+            
+            if (!ticketInput) {
+                alert("Please enter a ticket number.");
+                return;
+            }
+
+            const ticket = ticketDatabase[ticketInput];
+
+            if (ticket) {
+                resultDiv.classList.remove("hidden");
+                document.getElementById("result-device-title").innerText = ticket.device;
+                document.getElementById("result-issue").innerText = "Reported Fault: " + ticket.issue;
+                
+                const statusBadge = document.getElementById("result-status");
+                statusBadge.innerText = ticket.statusText;
+                
+                statusBadge.className = "status-badge";
+                statusBadge.classList.add("status-" + ticket.status);
+                
+                document.getElementById("result-notes").innerText = '"' + ticket.notes + '"';
+            } else {
+                resultDiv.classList.remove("hidden");
+                document.getElementById("result-device-title").innerText = "Ticket Not Found";
+                document.getElementById("result-issue").innerText = "Please check your code format.";
+                document.getElementById("result-status").className = "status-badge status-diagnosing";
+                document.getElementById("result-status").innerText = "Unknown Code";
+                document.getElementById("result-notes").innerText = "No entry matching '" + ticketInput + "' exists in our current active intake records.";
+            }
+        }
+
+        window.onload = calculateEstimate;
+    </script>
+</body>
+</html>
