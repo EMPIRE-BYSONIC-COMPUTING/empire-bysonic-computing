@@ -8,6 +8,16 @@
     color: #ffffff;
 }
 
+.custom-menu li {
+    color: rgb(219, 73, 15);
+}
+.custom-menu li::marker {
+    color: inherit;
+}
+.custom-menu li:hover::marker {
+    color: blue;
+}
+
 /* ==========================================
    PRODUCT GALLERY GRID
    ========================================== */
@@ -90,7 +100,7 @@ footer {
 
 .copyright-text {
     /* CHANGED: Set color to a high-contrast jet black so it jumps off the grey background */
-    color: white !important; 
+    color: rgb(5, 5, 5) !important; 
     font-style: italic;
     font-family: sans-serif;
     font-size: 14px;
@@ -102,3 +112,93 @@ footer {
     color: blue !important; /* Forces the signature interactive blue hover highlight */
     cursor: pointer;
 }
+
+ /* WhatsApp LED Button (Green Glow) */
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.led-btn {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: inline-block;
+    min-width: 110px;
+    padding: 3px;
+    border-radius: 12px;
+    background: transparent;
+    text-decoration: none;
+}
+
+.led-btn::before {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    z-index: -1;
+    background: conic-gradient(transparent, currentColor, transparent 30%);
+    animation: rotateLED 3s linear infinite;
+}
+
+.led-btn span {
+    position: relative;
+    z-index: 1;
+    display: block;
+    padding: 10px 18px;
+    border-radius: 9px;
+    background: #111111;
+    color: inherit;
+    font-weight: bold;
+    text-align: center;
+    transition: background 0.3s, color 0.3s;
+}
+
+.led-btn:hover span {
+    background: #1a1a1a;
+}
+
+        .btn-whatsapp {
+            color: #00ff66;
+            border: 2px solid #00ff66;
+            background: transparent;
+            box-shadow: 0 0 5px #00ff66, inset 0 0 5px rgba(0, 255, 102, 0.2);
+            text-shadow: 0 0 5px #00ff66;
+        }
+        .btn-whatsapp:hover {
+            background: #00ff66;
+            color: #111;
+            box-shadow: 0 0 15px #00ff66, 0 0 30px #00ff66;
+            text-shadow: none;
+        }
+
+        /* Facebook LED Button (Blue Glow) */
+        .btn-facebook {
+            color: #0066ff;
+            border: 2px solid #0066ff;
+            background: transparent;
+            box-shadow: 0 0 5px #0066ff, inset 0 0 5px rgba(0, 102, 255, 0.2);
+            text-shadow: 0 0 5px #0066ff;
+        }
+        .btn-facebook:hover {
+            background: #0066ff;
+            color: #111;
+            box-shadow: 0 0 15px #0066ff, 0 0 30px #0066ff;
+            text-shadow: none;
+        }
+
+        /* Instagram LED Button (Pink/Purple Glow) */
+        .btn-instagram {
+            color: #ff007f;
+            border: 2px solid #ff007f;
+            background: transparent;
+            box-shadow: 0 0 5px #ff007f, inset 0 0 5px rgba(255, 0, 127, 0.2);
+            text-shadow: 0 0 5px #ff007f;
+        }
+        .btn-instagram:hover {
+            background: #ff007f;
+            color: #111;
+            box-shadow: 0 0 15px #ff007f, 0 0 30px #ff007f;
+            text-shadow: none;
+        }

@@ -193,17 +193,30 @@
                 <h2>🧮 Our Instant Repair Estimator</h2>
                 <div class="form-group">
                     <label for="device-type">Device Type</label>
-                    <select id="device-type" onchange="calculateEstimate()">
+                    <select id="device-type" onchange="handleDeviceSelection(this)">
                         <option value="raspberry" data-price="250">Raspberry Pi / Single Board Computer</option>
                         <option value="minipc" data-price="450">Intel NUC / Mini PC</option>
                         <option value="handheld" data-price="550">Steam Deck / Handheld PC</option>
                         <option value="itx" data-price="600">Mini-ITX Custom Desktop</option>
+                        <!-- LEARNING MARKER: pricing-library items moved into this dropdown -->
+                        <optgroup label="Device Pricing Library">
+                            <option value="Dell OptiPlex 3050 / 5050" data-price="3200">Dell OptiPlex 3050 / 5050 - R3,200 - R6,000</option>
+                            <option value="HP ProDesk / EliteDesk" data-price="3500">HP ProDesk / EliteDesk - R3,500 - R7,500</option>
+                            <option value="Lenovo ThinkCentre" data-price="3800">Lenovo ThinkCentre - R3,800 - R8,200</option>
+                            <option value="Dell Latitude 3420 / 5480" data-price="4800">Dell Latitude 3420 / 5480 - R4,800 - R8,500</option>
+                            <option value="HP EliteBook 840 / 850" data-price="5000">HP EliteBook 840 / 850 - R5,000 - R9,000</option>
+                            <option value="Lenovo ThinkPad T14 / X1" data-price="6200">Lenovo ThinkPad T14 / X1 - R6,200 - R11,500</option>
+                            <option value="MacBook Air / Pro" data-price="9000">MacBook Air / Pro - R9,000 - R22,000</option>
+                            <option value="Microsoft Surface Pro / Laptop" data-price="8500">Microsoft Surface Pro / Laptop - R8,500 - R18,000</option>
+                            <option value="iPad / Android tablet" data-price="3500">iPad / Android tablet - R3,500 - R9,500</option>
+                            <option value="Intel NUC / Mini PC" data-price="2800">Intel NUC / Mini PC - R2,800 - R6,200</option>
+                        </optgroup>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="issue-type">Primary Issue</label>
-                    <select id="issue-type" onchange="calculateEstimate()">
+                    <select id="issue-type" onchange="handleIssueSelection(this)">
                         <option value="power" data-price="150">Power Issue / Dead Board</option>
                         <option value="port" data-price="200">Broken Port (HDMI, USB-C, RJ45)</option>
                         <option value="thermal" data-price="100">Overheating / Thermal Throttling</option>
@@ -237,6 +250,7 @@
                         <span id="total-price">R0.00</span>
                     </div>
                 </div>
+
             </div>
 
             <!-- Ticket Tracking Card -->
@@ -296,6 +310,29 @@
             document.getElementById("total-price").innerText = "R" + totalPrice.toFixed(2);
         }
 
+        function handleDeviceSelection(selectElement) {
+            calculateEstimate();
+
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            const selectedValue = selectedOption.value;
+            const selectedText = encodeURIComponent(selectedOption.text.trim());
+            const issueText = encodeURIComponent(document.getElementById("issue-type").options[document.getElementById("issue-type").selectedIndex].text.trim());
+            const total = document.getElementById("total-price").innerText.replace("R", "").trim();
+
+            window.location.href = "Quotation.html?device=" + selectedText + "&issue=" + issueText + "&total=" + encodeURIComponent(total);
+        }
+
+        function handleIssueSelection(selectElement) {
+            calculateEstimate();
+
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            const selectedText = encodeURIComponent(selectedOption.text.trim());
+            const deviceText = encodeURIComponent(document.getElementById("device-type").options[document.getElementById("device-type").selectedIndex].text.trim());
+            const total = document.getElementById("total-price").innerText.replace("R", "").trim();
+
+            window.location.href = "Quotation.html?device=" + deviceText + "&issue=" + selectedText + "&total=" + encodeURIComponent(total);
+        }
+
         function trackTicket() {
             const ticketInput = document.getElementById("ticket-id").value.trim().toUpperCase();
             const resultDiv = document.getElementById("tracking-result");
@@ -329,7 +366,9 @@
             }
         }
 
-        window.onload = calculateEstimate;
+        window.onload = function() {
+            calculateEstimate();
+        };
     </script>
 </body>
 </html>

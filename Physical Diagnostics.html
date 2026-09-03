@@ -3,15 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Diagnostics</title>
-<link rel="stylesheet" href="style.css">
-     <header>
-        <div class="">
-            <h2 style="margin: 0; text-decoration: underline; font-family:Arial Black;"></h2>
-        </div>
-        <div class="beig-color">
-
- <style>
+    <title>Diagnostics</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
         /* Base Page Styles */
         body {
             background-color: rgb(188, 192, 192);
@@ -62,27 +57,37 @@
         }
 
         /* Typography & Helper Classes */
-        .article-text, .white-color {
+        .article-text {
             color: white;
             font-weight: bold;
             margin-top: 5px;
         }
+
+        /* Copyright notice text style change */
+        .copyright-text {
+            color: rgb(10, 9, 9); 
+            font-weight: bold;
+            margin-top: 30px;
+            text-align: center;
+        }
+
         .btn-classic {
-        background-color: #007bff;
-        color: #ffffff;
-        font-size: 16px;
-        font-family: Arial, sans-serif;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.2s ease;
+            background-color: #007bff;
+            color: #ffffff;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
         }
 
         /* Hover effect */
         .btn-classic:hover {
-        background-color: #84ac15;
+            background-color: #84ac15;
         }
+        
         .center-text {
             text-align: center;
         }
@@ -118,21 +123,46 @@
             object-fit: contain;
         }
     </style>
+</head>
 <body>
-<h1 style="margin: 0; text-decoration: underline; font-family:Arial Black;"></h1>
 
-<strong><u><h1>Physical Diagnostics</h1> </u>
-</strong><p><strong>Identifying System Instability:</strong><i>Exposing hidden hardware defects that cause random blue screens (BSODs) or system crashes.</p></i>
-    <p><strong>Verify Overclocks:</strong> <i>Testing if a manually boosted CPU, GPU, or RAM configuration is safe for daily use.</p></i>
-    <p><strong>Thermal Performance:</strong><i>Checking if your CPU or GPU cooling solutions prevent dangerous overheating and thermal throttling.</p></i>
-    <strong>Benchmarking:</strong><i>the peak performance capabilities of hardware components against industry standards.</p></i>
-   Testing Categories & Industry-Standard ToolsComponentTest TypeWhat it EvaluatesTop Recommended ToolsCPU (Processor)Stress & ThermalsComputes complex mathematical operations to maximize heat and power draw.Cinebench, Prime95, AIDA64GPU (Graphics)3D RenderingSimulates heavy gaming workloads to test graphics memory, core stability, and power supplies.3DMark, FurMark, Unigine HeavenRAM (Memory)Integrity & FaultsWrites and reads massive data arrays to detect corrupted sectors or timing instability.MemTest86, TestMem5 (TM5)Storage (SSD/HDD)Read/Write SpeedTests sequential and random data transfer limits to assess drive health.CrystalDiskMark, HWiNFO (for health monitoring)Step-by-Step Testing Workflow[1. Setup Monitoring] ──> [2. Establish Baseline] ──> [3. Run Stress Test] ──> [4. Analyze Stability]
-  (HWiNFO / MSI Afterburner)      (Idling Thermals)           (10-30 Minute Loop)         (Check Crashes/Throttling)
-Setup Monitoring Software: Before starting, open a hardware monitoring utility like HWiNFO or MSI Afterburner to track real-time temperatures, voltages, and clock speeds.Establish a Baseline: Let your PC idle for 5 minutes. Take note of resting temperatures (typically 30°C to 50°C for modern processors).Run the Test: Launch your chosen tool (e.g., a 10-minute loop of Cinebench). Keep a close eye on your monitoring software.Analyze Results: Watch out for critical red flags such as thermal throttling (automatic downclocking to protect the chip), visual artifacts (lines or flashing on your screen), or total system lockups.
+    <h1>Physical Diagnostics</h1> 
+    
+    <p><strong>Identifying System Instability:</strong> <i>Exposing hidden hardware defects that cause random blue screens (BSODs) or system crashes.</i></p>
+    <p><strong>Verify Overclocks:</strong> <i>Testing if a manually boosted CPU, GPU, or RAM configuration is safe for daily use.</i></p>
+    <p><strong>Thermal Performance:</strong> <i>Checking if your CPU or GPU cooling solutions prevent dangerous overheating and thermal throttling.</i></p>
+    <p><strong>Benchmarking:</strong> <i>The peak performance capabilities of hardware components against industry standards.</i></p>
    
+    <!-- Content Section -->
+    <div style="margin-top: 20px; background: rgba(255,255,255,0.4); padding: 15px; border-radius: 5px;">
+        <h3>Testing Categories & Industry-Standard Tools</h3>
+        <p><strong>CPU (Processor) Stress & Thermals:</strong> Computes complex mathematical operations to maximize heat and power draw (Cinebench, Prime95, AIDA64).</p>
+        <p><strong>GPU (Graphics) 3D Rendering:</strong> Simulates heavy gaming workloads to test graphics memory, core stability, and power supplies (3DMark, FurMark, Unigine Heaven).</p>
+        <p><strong>RAM (Memory) Integrity & Faults:</strong> Writes and reads massive data arrays to detect corrupted sectors or timing instability (MemTest86, TestMem5).</p>
+        <p><strong>Storage (SSD/HDD) Read/Write Speed:</strong> Tests sequential and random data transfer limits to assess drive health (CrystalDiskMark, HWiNFO).</p>
+    </div>
+
+    <div style="margin-top: 20px; background: rgba(0,0,0,0.05); padding: 15px; border-radius: 5px;">
+        <h3>Step-by-Step Testing Workflow</h3>
+        <p><code>[1. Setup Monitoring] ──> [2. Establish Baseline] ──> [3. Run Stress Test] ──> [4. Analyze Stability]</code></p>
+        <ol>
+            <li><strong>Setup Monitoring Software:</strong> Before starting, open a hardware monitoring utility like HWiNFO or MSI Afterburner to track real-time temperatures, voltages, and clock speeds.</li>
+            <li><strong>Establish a Baseline:</strong> Let your PC idle for 5 minutes. Take note of resting temperatures (typically 30°C to 50°C for modern processors).</li>
+            <li><strong>Run the Test:</strong> Launch your chosen tool (e.g., a 10-minute loop of Cinebench). Keep a close eye on your monitoring software.</li>
+            <li><strong>Analyze Results:</strong> Watch out for critical red flags such as thermal throttling (automatic downclocking to protect the chip), visual artifacts (lines or flashing on your screen), or total system lockups.</li>
+        </ol>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <button class="btn-classic" onclick="window.location.href='Intake Form.html';">Book Repair</button>
+    </div>
+   
+    <!-- Corrected Footer inside Body -->
+    <footer>
+        <p class="copyright-text">
+            <i>&copy; 2026 EMPIRE BYSONIC COMPUTING</i>
+        </p>
+    </footer>
+
 </body>
 </html>
-<footer></footer>
-<p class="white-color copyright-text">
-    <i>&copy; 2026 EMPIRE BYSONIC COMPUTING</i>
-</p>
