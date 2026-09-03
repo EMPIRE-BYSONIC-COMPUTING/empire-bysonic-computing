@@ -3,14 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>EMPIRE BYSONIC COMPUTING</title>
-        <link rel="stylesheet" href="style.css">
+    <title>Empire Bysonic Computing</title>
+    
+    <!-- Bootstrap Icons stylesheet -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Your local style sheet link MUST be underneath the icon link -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
     <style>
         body {
             background-color: rgb(43, 73, 72);
             font-family: sans-serif;
             margin: 0;
             padding: 20px;
+            animation: pageFadeIn 0.7s ease-out both;
         }
         .amber-color {
             background-color: #FFBF00;
@@ -23,11 +32,123 @@
             padding: 15px;
             text-align: center;
             color: #333;
+            animation: sectionRise 0.7s 0.15s ease-out both;
+        }
+
+        /* LEARNING MARKER: reverse LED effect on the first h2 container */
+        .led-heading-panel {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            border-radius: 12px;
+            background-color: transparent;
+        }
+
+        .led-heading-panel::before {
+            content: '';
+            position: absolute;
+            inset: -50%;
+            background: conic-gradient(transparent, #00f0ff, #ff007f, transparent 30%);
+            animation: rotateLED 3s linear infinite reverse; /* LEARNING MARKER: reverse changes rotation direction */
+            z-index: -2;
+        }
+
+        .led-heading-panel::after {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            background: beige;
+            border-radius: 9px;
+            z-index: -1;
+        }
+
+        .led-heading-panel > * {
+            position: relative;
+            z-index: 1;
         }
         .red-color {
             background-color: rgb(219, 77, 77);
             padding: 20px;
             border-radius: 5px;
+            animation: sectionRise 0.7s 0.3s ease-out both;
+
+                /* Footer & Copyright Wrapper */
+    footer {
+        text-align: center;
+        width: 100%;
+        margin-top: 50px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(0, 0, 0, 0.1); /* Subtle separation line */
+    }
+
+    .copyright-text {
+        color: rgb(10, 9, 9); 
+        font-weight: bold;
+        margin: 15px 0;
+    }
+
+    /* Back to Top Button Styling */
+    .back-to-top {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background-color: rgb(243, 233, 233);
+        color: #000;
+        border: 2px solid #000;
+        padding: 8px 16px;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-size: 14px;
+    }
+
+    .back-to-top:hover {
+        background-color: #007bff;
+        color: #fff;
+        border-color: #007bff;
+    }
+
+    /* Social Media Links Layout */
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .social-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        background-color: rgb(243, 233, 233);
+        border: 2px solid #000;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+    }
+
+    .social-icon svg {
+        width: 18px;
+        height: 18px;
+        fill: #000;
+    }
+
+    /* Hover states for social buttons */
+    .social-icon:hover {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    
+    .social-icon:hover svg {
+        fill: #fff;
+    }
+
+    /* Smooth Scrolling for the entire page */
+    html {
+        scroll-behavior: smooth;
+    }
         }
         .button-group {
             display: flex;
@@ -119,11 +240,468 @@
             gap: 20px;
             margin-top: 20px;
         }
+        .ad-marquee {
+            overflow: hidden;
+            margin: 20px 0;
+            padding: 8px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.25);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+        }
+        .ad-track {
+            display: flex;
+            width: max-content;
+            animation: moveAds 22s linear infinite;
+        }
+        .ad-marquee:hover .ad-track {
+            animation-play-state: paused;
+        }
+        .ad-card {
+            min-width: 220px;
+            margin-right: 12px;
+            padding: 12px 18px;
+            border: 1px solid #00f0ff;
+            border-radius: 8px;
+            background: #111;
+            color: #fff;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.35);
+        }
+        .ad-card strong {
+            display: block;
+            color: #ffbf00;
+            font-size: 1rem;
+        }
+        .ad-card span {
+            display: block;
+            margin-top: 4px;
+            color: #f1e8e6;
+            font-size: 0.85rem;
+        }
+
+        .explainer-video {
+            max-width: 760px;
+            margin: 24px auto;
+            padding: 10px;
+            border: 1px solid rgba(0, 240, 255, 0.5);
+            border-radius: 10px;
+            background: #101827;
+            box-shadow: 0 0 16px rgba(0, 240, 255, 0.2);
+        }
+        .explainer-stage {
+            position: relative;
+            min-height: 150px;
+            overflow: hidden;
+            border-radius: 6px;
+            background: linear-gradient(135deg, #111, #263449);
+        }
+        .video-scene {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            padding: 24px 8%;
+            color: #fff;
+            opacity: 0;
+            transform: translateX(24px) scale(0.98);
+            animation: sceneCycle 12s infinite;
+        }
+        .video-scene:nth-child(2) { animation-delay: -3s; }
+        .video-scene:nth-child(3) { animation-delay: -6s; }
+        .video-scene:nth-child(4) { animation-delay: -9s; }
+        .technician-figure {
+            position: relative;
+            flex: 0 0 110px;
+            width: 110px;
+            height: 120px;
+        }
+        .tech-head {
+            position: absolute;
+            top: 8px;
+            left: 42px;
+            width: 32px;
+            height: 34px;
+            border: 2px solid #d68f42;
+            border-radius: 50%;
+            background: #f1b36d;
+            z-index: 3;
+        }
+        .tech-head::before {
+            content: '';
+            position: absolute;
+            top: -7px;
+            left: -3px;
+            width: 34px;
+            height: 15px;
+            border-radius: 18px 18px 4px 4px;
+            background: #30241f;
+        }
+        .tech-head::after {
+            content: '•  •';
+            position: absolute;
+            top: 13px;
+            left: 7px;
+            color: #30241f;
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+        .tech-body {
+            position: absolute;
+            top: 42px;
+            left: 27px;
+            width: 62px;
+            height: 55px;
+            border-radius: 18px 18px 8px 8px;
+            background: #ffbf00;
+            z-index: 2;
+        }
+        .tech-body::after {
+            content: '';
+            position: absolute;
+            top: 11px;
+            left: 26px;
+            width: 10px;
+            height: 32px;
+            border-left: 2px solid rgba(17, 17, 17, 0.45);
+        }
+        .tech-arm,
+        .tech-hand,
+        .tech-tool {
+            z-index: 4;
+        }
+        .tech-arm {
+            position: absolute;
+            top: 64px;
+            left: 67px;
+            width: 42px;
+            height: 11px;
+            border-radius: 10px;
+            background: #f1b36d;
+            transform-origin: left center;
+            animation: repairArm 0.9s ease-in-out infinite alternate;
+        }
+        .tech-hand {
+            position: absolute;
+            top: 73px;
+            left: 96px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: #f1b36d;
+            animation: repairHand 0.9s ease-in-out infinite alternate;
+        }
+        .tech-tool {
+            position: absolute;
+            top: 82px;
+            left: 98px;
+            width: 4px;
+            height: 26px;
+            border-radius: 3px;
+            background: #c7d2da;
+            transform: rotate(24deg);
+            transform-origin: top center;
+            animation: toolWork 0.9s ease-in-out infinite alternate;
+        }
+        .tech-tool::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: -3px;
+            width: 10px;
+            height: 7px;
+            border-radius: 2px;
+            background: #ef4444;
+        }
+        .tech-laptop {
+            position: absolute;
+            bottom: 12px;
+            left: 5px;
+            width: 91px;
+            height: 43px;
+            border: 3px solid #00f0ff;
+            border-radius: 5px;
+            background: #263449;
+            transform: skew(-8deg);
+            z-index: 3;
+        }
+        .tech-laptop::after {
+            content: '';
+            position: absolute;
+            left: -8px;
+            bottom: -10px;
+            width: 104px;
+            height: 6px;
+            border-radius: 4px;
+            background: #00f0ff;
+        }
+        .tech-laptop::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 9px;
+            width: 66px;
+            height: 19px;
+            background: linear-gradient(135deg, #00f0ff 0 18%, transparent 18% 38%, #ffbf00 38% 55%, transparent 55%);
+            opacity: 0.75;
+        }
+        .tech-desk {
+            position: absolute;
+            right: -4px;
+            bottom: 3px;
+            width: 119px;
+            height: 8px;
+            border-radius: 4px;
+            background: #9a5b35;
+            z-index: 2;
+        }
+        .tech-badge {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 3px 7px;
+            border-radius: 4px;
+            background: #ffbf00;
+            color: #111;
+            font-size: 0.6rem;
+            font-weight: bold;
+            letter-spacing: 0.04em;
+            z-index: 5;
+        }
+        .technician-figure.upgrading .tech-tool {
+            background: #10b981;
+        }
+        .technician-figure.quoting .tech-tool {
+            background: #f1e8e6;
+            animation-name: toolLift;
+        }
+        .technician-figure.quoting .tech-arm {
+            animation-name: writeArm;
+        }
+        .technician-figure.quoting .tech-tool::after {
+            bottom: -4px;
+            left: -2px;
+            width: 8px;
+            height: 5px;
+            background: #00f0ff;
+        }
+        .technician-figure.diagnosing .tech-tool {
+            width: 18px;
+            height: 18px;
+            border: 3px solid #00f0ff;
+            border-radius: 50%;
+            background: transparent;
+            transform: rotate(0deg);
+            animation-name: inspectTool;
+        }
+        .technician-figure.diagnosing .tech-tool::after {
+            bottom: -15px;
+            left: 11px;
+            width: 4px;
+            height: 17px;
+            border-radius: 3px;
+            background: #00f0ff;
+            transform: rotate(-35deg);
+        }
+        .technician-figure.repairing .tech-tool::before {
+            content: '';
+            position: absolute;
+            top: 7px;
+            left: -8px;
+            width: 20px;
+            height: 3px;
+            border-radius: 3px;
+            background: #ffbf00;
+            animation: solderSpark 0.9s ease-in-out infinite alternate;
+        }
+        .technician-figure.upgrading .tech-tool {
+            animation-name: installPart;
+        }
+        .technician-figure.upgrading .tech-laptop::before {
+            background: linear-gradient(135deg, #10b981 0 18%, transparent 18% 38%, #00f0ff 38% 55%, transparent 55%);
+        }
+        .technician-figure.quoting .tech-laptop::before {
+            background: linear-gradient(135deg, #ffbf00 0 18%, transparent 18% 38%, #10b981 38% 55%, transparent 55%);
+        }
+        .scene-icon {
+            display: grid;
+            place-items: center;
+            flex: 0 0 74px;
+            width: 74px;
+            height: 74px;
+            border: 2px solid #00f0ff;
+            border-radius: 50%;
+            color: #ffbf00;
+            font-size: 2rem;
+            box-shadow: 0 0 18px rgba(0, 240, 255, 0.45);
+            animation: iconPulse 1.8s ease-in-out infinite;
+        }
+        .video-scene h3 {
+            margin: 0 0 6px;
+            color: #ffbf00;
+            font-size: 1.35rem;
+        }
+        .video-scene p {
+            margin: 0;
+            color: #f1e8e6;
+        }
+        .explainer-progress {
+            height: 3px;
+            margin-top: 8px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .explainer-progress::before {
+            content: '';
+            display: block;
+            height: 100%;
+            width: 100%;
+            background: #ffbf00;
+            transform-origin: left;
+            animation: clipProgress 12s linear infinite;
+        }
+
+        @keyframes sceneCycle {
+            0%, 4% { opacity: 0; transform: translateX(24px) scale(0.98); }
+            8%, 24% { opacity: 1; transform: translateX(0) scale(1); }
+            28%, 100% { opacity: 0; transform: translateX(-24px) scale(1.02); }
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        @keyframes repairArm {
+            from { transform: rotate(18deg); }
+            to { transform: rotate(42deg); }
+        }
+
+        @keyframes repairHand {
+            from { transform: translate(0, 0); }
+            to { transform: translate(-4px, 5px); }
+        }
+
+        @keyframes toolWork {
+            from { transform: rotate(24deg) translateY(0); }
+            to { transform: rotate(34deg) translateY(5px); }
+        }
+
+        @keyframes toolLift {
+            from { transform: rotate(24deg) translateY(0); }
+            to { transform: rotate(8deg) translateY(-8px); }
+        }
+
+        @keyframes inspectTool {
+            from { transform: translate(0, 0) rotate(-12deg); }
+            to { transform: translate(-8px, 8px) rotate(12deg); }
+        }
+
+        @keyframes solderSpark {
+            from { opacity: 0.25; transform: scaleX(0.6); }
+            to { opacity: 1; transform: scaleX(1.2); }
+        }
+
+        @keyframes installPart {
+            from { transform: rotate(34deg) translateY(5px); }
+            to { transform: rotate(52deg) translateY(13px); }
+        }
+
+        @keyframes writeArm {
+            from { transform: rotate(28deg) translate(0, 0); }
+            to { transform: rotate(38deg) translate(-5px, 6px); }
+        }
+
+        @keyframes clipProgress {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+
+        @keyframes moveAds {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ad-track {
+                animation: none;
+            }
+            .video-scene {
+                animation: none;
+            }
+            .video-scene:not(:first-child) {
+                display: none;
+            }
+            .scene-icon,
+            .tech-arm,
+            .tech-hand,
+            .tech-tool,
+            .technician-figure.diagnosing .tech-tool::after,
+            .technician-figure.repairing .tech-tool::before,
+            .explainer-progress::before {
+                animation: none;
+            }
+        }
         .product-item {
             background: rgba(255, 255, 255, 0.1);
             padding: 10px;
             border-radius: 4px;
             text-align: center;
+            border: 2px solid transparent;
+            transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+            animation: productReveal 0.6s ease-out both;
+        }
+        .product-item:nth-child(1) { animation-delay: 0.35s; }
+        .product-item:nth-child(2) { animation-delay: 0.45s; }
+        .product-item:nth-child(3) { animation-delay: 0.55s; }
+        .product-item:nth-child(4) { animation-delay: 0.65s; }
+        .product-item:nth-child(5) { animation-delay: 0.75s; }
+        .product-item:nth-child(6) { animation-delay: 0.85s; }
+        .product-item:nth-child(7) { animation-delay: 0.95s; }
+        .product-item:nth-child(8) { animation-delay: 1.05s; }
+
+        @keyframes pageFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes sectionRise {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes productReveal {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        /* LEARNING MARKER: the entire product card changes on hover */
+        .product-item:hover {
+            background: rgba(17, 17, 17, 0.75);
+            border-color: #00f0ff;
+            box-shadow: 0 0 18px rgba(0, 240, 255, 0.55), 0 0 30px rgba(255, 0, 127, 0.25);
+            transform: translateY(-6px) scale(1.02);
         }
         .product-item img {
             max-width: 100%;
@@ -134,10 +712,21 @@
         .product-link { 
             color: #39168a; 
             text-decoration: none;
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            transition: color 0.2s ease, background-color 0.2s ease, text-shadow 0.2s ease;
         }
         .product-link:hover {
             color: #fe534d;
             text-decoration: underline;
+        }
+        /* LEARNING MARKER: card hover makes the product text stand out */
+        .product-item:hover .product-link {
+            background-color: #ff00b3;
+            color: #111;
+            text-decoration: underline;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
         }
 
            .custom-menu a {
@@ -151,6 +740,49 @@
         text-decoration:dashed;
            }
 
+        .sales-section {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 14px;
+            padding: 24px;
+            margin: 28px 0;
+        }
+        .sales-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+        .sales-header h3 { margin: 0; color: #f9d976; font-size: 1.8rem; }
+        .sales-grid {
+            display: grid;
+            grid-template-columns: minmax(260px, 380px) minmax(0, 1fr);
+            gap: 24px;
+        }
+        .sale-form {
+            background: rgba(17,17,17,0.38);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .form-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 12px; }
+        .sale-form label { display: block; font-weight: bold; margin-bottom: 6px; color: #e7e7e7; }
+        .sale-form input, .sale-form select, .sale-form textarea, .sale-form button { width: 100%; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); padding: 10px 12px; font: inherit; }
+        .sale-form input, .sale-form select, .sale-form textarea { background: #101827; color: #fff; }
+        .sale-form textarea { min-height: 90px; resize: vertical; }
+        .sale-form button { background: linear-gradient(135deg, #ffa800, #ffbf00); color: #191919; font-weight: 700; cursor: pointer; border: none; margin-top: 8px; }
+        .image-preview { width: 100%; max-height: 180px; object-fit: cover; border-radius: 12px; display: none; margin-top: 12px; border: 1px solid rgba(255,255,255,0.12); }
+        .sale-listings { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
+        .sale-item { background: rgba(9,14,22,0.85); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; overflow: hidden; }
+        .sale-item img { width: 100%; height: 180px; object-fit: cover; display: block; background: #1b2433; }
+        .sale-item-body { padding: 14px; }
+        .sale-item-body h4 { margin: 0 0 8px; color: #f5f5f5; }
+        .sale-item-meta { display: flex; justify-content: space-between; gap: 10px; color: #ffd76a; font-weight: 700; margin-bottom: 8px; }
+        .sale-item-body p { margin: 8px 0 0; color: #c7d2fe; line-height: 1.5; font-size: 0.95rem; }
+        @media (max-width: 720px) { .sales-grid, .form-row { grid-template-columns: 1fr; } }
+
     </style>
 
 </head>
@@ -161,7 +793,7 @@
         <div class="amber-color">
             <h1 style="margin: 0; text-decoration: underline;">OPERATIONS</h1>
         </div>
-        <div class="beig-color">
+        <div class="beig-color led-heading-panel">
             <h2>Laptop & Desktop Computers' repairs and sales</h2>
             <p><i>**where devices get fixed**</i></p>
             <p><strong>Contact: +2781 827 2643</strong></p>
@@ -169,6 +801,84 @@
     </header>
 
     <main>
+        <div class="ad-marquee" aria-label="Current service offers">
+            <div class="ad-track">
+                <div class="ad-card"><strong>DEVICE DIAGNOSTICS</strong><span>Find the fault before replacing parts</span></div>
+                <div class="ad-card"><strong>RAM UPGRADES</strong><span>Improve speed and everyday performance</span></div>
+                <div class="ad-card"><strong>SSD INSTALLATION</strong><span>Faster startup and reliable storage</span></div>
+                <div class="ad-card"><strong>PORT REPAIRS</strong><span>USB-C, HDMI and charging connectors</span></div>
+                <div class="ad-card" aria-hidden="true"><strong>DEVICE DIAGNOSTICS</strong><span>Find the fault before replacing parts</span></div>
+                <div class="ad-card" aria-hidden="true"><strong>RAM UPGRADES</strong><span>Improve speed and everyday performance</span></div>
+                <div class="ad-card" aria-hidden="true"><strong>SSD INSTALLATION</strong><span>Faster startup and reliable storage</span></div>
+                <div class="ad-card" aria-hidden="true"><strong>PORT REPAIRS</strong><span>USB-C, HDMI and charging connectors</span></div>
+            </div>
+        </div>
+        <section class="explainer-video" aria-label="How Empire Bysonic Computing helps customers">
+            <div class="explainer-stage">
+                <div class="video-scene">
+                    <div class="technician-figure diagnosing" aria-label="Animated technician inspecting a laptop">
+                        <div class="tech-head"></div>
+                        <div class="tech-body"></div>
+                        <div class="tech-arm"></div>
+                        <div class="tech-hand"></div>
+                        <div class="tech-tool"></div>
+                        <div class="tech-laptop"></div>
+                        <div class="tech-desk"></div>
+                        <div class="tech-badge">CHECK</div>
+                    </div>
+                    <div><h3>Diagnose</h3><p>We identify the fault through careful hardware testing.</p></div>
+                </div>
+                <div class="video-scene">
+                    <div class="technician-figure repairing" aria-label="Animated technician repairing a laptop">
+                        <div class="tech-head"></div><div class="tech-body"></div><div class="tech-arm"></div>
+                        <div class="tech-hand"></div><div class="tech-tool"></div><div class="tech-laptop"></div>
+                        <div class="tech-desk"></div><div class="tech-badge">REPAIR</div>
+                    </div>
+                    <div><h3>Repair</h3><p>We restore damaged boards, ports, screens, and power systems.</p></div>
+                </div>
+                <div class="video-scene">
+                    <div class="technician-figure upgrading" aria-label="Animated technician upgrading a laptop">
+                        <div class="tech-head"></div><div class="tech-body"></div><div class="tech-arm"></div>
+                        <div class="tech-hand"></div><div class="tech-tool"></div><div class="tech-laptop"></div>
+                        <div class="tech-desk"></div><div class="tech-badge">UPGRADE</div>
+                    </div>
+                    <div><h3>Upgrade</h3><p>We improve performance with better RAM, SSDs, cooling, and parts.</p></div>
+                </div>
+                <div class="video-scene">
+                    <div class="technician-figure quoting" aria-label="Animated technician preparing a repair quote">
+                        <div class="tech-head"></div><div class="tech-body"></div><div class="tech-arm"></div>
+                        <div class="tech-hand"></div><div class="tech-tool"></div><div class="tech-laptop"></div>
+                        <div class="tech-desk"></div><div class="tech-badge">QUOTE</div>
+                    </div>
+                    <div><h3>Quote</h3><p>We provide a clear repair estimate before work begins.</p></div>
+                </div>
+            </div>
+            <div class="explainer-progress" aria-hidden="true"></div>
+        </section>
+
+        <section class="sales-section" id="sales-section">
+            <div class="sales-header">
+                <h3>Available for Sale</h3>
+                <span style="color: #dfe7ff; font-weight: bold;">New &amp; Second-Hand Devices</span>
+            </div>
+            <div class="sales-grid">
+                <form class="sale-form" id="sale-form">
+                    <div class="form-row">
+                        <div><label for="device-name">Device Name</label><input id="device-name" name="device-name" type="text" placeholder="e.g. Dell Latitude 7480" required></div>
+                        <div><label for="device-condition">Condition</label><select id="device-condition" name="device-condition"><option value="New">New</option><option value="Second Hand">Second Hand</option><option value="Refurbished">Refurbished</option></select></div>
+                    </div>
+                    <div class="form-row">
+                        <div><label for="device-price">Price</label><input id="device-price" name="device-price" type="text" placeholder="e.g. R4,500" required></div>
+                        <div><label for="device-category">Category</label><select id="device-category" name="device-category"><option value="Laptop">Laptop</option><option value="Desktop">Desktop</option><option value="Tablet">Tablet</option><option value="Mini PC">Mini PC</option><option value="Accessory">Accessory</option></select></div>
+                    </div>
+                    <div><label for="device-description">Description</label><textarea id="device-description" name="device-description" placeholder="Add details, specs, warranty, or condition notes..." required></textarea></div>
+                    <div style="margin-top: 12px;"><label for="device-image">Upload Device Image</label><input id="device-image" name="device-image" type="file" accept="image/*"><img id="image-preview" class="image-preview" alt="Device preview"></div>
+                    <button type="submit">Add Device for Sale</button>
+                </form>
+                <div><div class="sale-listings" id="sale-listings"></div></div>
+            </div>
+        </section>
+
         <p class="blue-color"><mark>Below is a list of service options to your needs, select for repairs or warranty to be used:</mark></p>
         
         <div class="red-color">
@@ -177,7 +887,10 @@
                 <button class="led-button" title="Repairs and Maintenance" onclick="window.location.href='Repairs%20&%20Maintenance.html';" aria-label="Repairs and Maintenance">
                     <span>REPAIRS AND MAINTENANCE</span>
                 </button>
-                <button class="led-button" title="Sales" onclick="window.location.href='your-new-page.html';" aria-label="Sales">
+                <button class="led-button" title="Book Repair" onclick="window.location.href='Intake Form.html';" aria-label="Book Repair">
+                    <span>BOOK REPAIR</span>
+                </button>
+                <button class="led-button" title="Sales" onclick="document.getElementById('sales-section').scrollIntoView({ behavior: 'smooth' });" aria-label="Sales">
                     <span>SALES</span>
                 </button>
                 <button class="led-button" title="Warranty" onclick="window.location.href='your-new-page.html';" aria-label="Warranty">
@@ -265,9 +978,90 @@
             </div>
         </div> <!-- Fixed: Correctly closed product-gallery wrapper -->
     </main>
+    <footer>
+    <!-- Back to Top Link (Targets the implicit top of the page) -->
+    <a href="#" class="back-to-top">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+        Back to Top
+    </a>
+
+    <!-- Copyright Text -->
+    <p class="copyright-text">
+        <i>&copy; 2026 EMPIRE BYSONIC COMPUTING</i>
+    </p>
+
+    <!-- Social Media Links -->
+    <div class="social-media-container">
+        <h3>CONNECT WITH US</h3>
+        <div class="social-buttons">
+            <!-- WhatsApp Chat Link -->
+            <a href="https://wa.me/27818272643" target="_blank" rel="noopener noreferrer" class="led-btn btn-whatsapp">WhatsApp</a>
+            <!-- Facebook Link -->
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="led-btn btn-facebook">Facebook</a>
+            <!-- Instagram Link -->
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="led-btn btn-instagram">Instagram</a>
+        </div>
+</footer>
+    <script>
+        const saleForm = document.getElementById('sale-form');
+        const imageInput = document.getElementById('device-image');
+        const imagePreview = document.getElementById('image-preview');
+        const saleListings = document.getElementById('sale-listings');
+        const salesSection = document.getElementById('sales-section');
+        const adMarquee = document.querySelector('.ad-marquee');
+        const explainerVideo = document.querySelector('.explainer-video');
+        salesSection.after(adMarquee, explainerVideo);
+
+        const defaultListings = [
+            { name: 'Dell Latitude 7480', condition: 'Refurbished', price: 'R4,500', category: 'Laptop', description: 'Core i5, 16GB RAM, 256GB SSD, clean refurbished unit with battery tested.', image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=900&q=80' },
+            { name: 'Mini PC Kit', condition: 'New', price: 'R6,800', category: 'Mini PC', description: 'Compact workstation with 8GB RAM, 512GB NVMe and Wi-Fi support.', image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80' },
+            { name: 'Apple iPad 9th Gen', condition: 'Second Hand', price: 'R3,200', category: 'Tablet', description: 'Good cosmetic condition, full tested, includes charger and case.', image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=900&q=80' }
+        ];
+
+        function renderListings(items) {
+            saleListings.innerHTML = items.map(item => `
+                <article class="sale-item">
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="sale-item-body">
+                        <div class="sale-item-meta"><span>${item.category}</span><span>${item.price}</span></div>
+                        <h4>${item.name}</h4>
+                        <div class="sale-item-meta" style="font-size: 0.8rem; color: #d8e3ff; margin-bottom: 0;"><span>${item.condition}</span></div>
+                        <p>${item.description}</p>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        imageInput.addEventListener('change', function () {
+            const file = this.files && this.files[0];
+            if (!file) { imagePreview.style.display = 'none'; imagePreview.src = ''; return; }
+            const reader = new FileReader();
+            reader.onload = function (event) { imagePreview.src = event.target.result; imagePreview.style.display = 'block'; };
+            reader.readAsDataURL(file);
+        });
+
+        saleForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const listing = {
+                name: document.getElementById('device-name').value.trim(),
+                condition: document.getElementById('device-condition').value,
+                price: document.getElementById('device-price').value.trim(),
+                category: document.getElementById('device-category').value,
+                description: document.getElementById('device-description').value.trim(),
+                image: imageInput.files && imageInput.files[0] ? URL.createObjectURL(imageInput.files[0]) : 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=900&q=80'
+            };
+            const existing = JSON.parse(localStorage.getItem('bysonic-sales-listings') || 'null') || defaultListings;
+            existing.unshift(listing);
+            localStorage.setItem('bysonic-sales-listings', JSON.stringify(existing));
+            renderListings(existing);
+            saleForm.reset();
+            imagePreview.style.display = 'none';
+            imagePreview.src = '';
+        });
+
+        const savedListings = JSON.parse(localStorage.getItem('bysonic-sales-listings') || 'null');
+        renderListings(savedListings || defaultListings);
+    </script>
 </body>
 </html>
-<footer></footer>
-<p class="white-color copyright-text">
-    <i>&copy; 2026 EMPIRE BYSONIC COMPUTING</i>
-</p>
+
