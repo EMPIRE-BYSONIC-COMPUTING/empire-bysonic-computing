@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Repairs & Maintenance</title>
+        <title>Empire Bysonic Computing | Payments</title>
         <link rel="stylesheet" href="style.css">
     <style>
         /* Base Page Styles */
@@ -35,6 +35,7 @@
             justify-content: space-between;
             gap: 10px;
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
 
         /* Typography & Helper Classes */
@@ -62,6 +63,35 @@
         .btn-classic:hover {
             background-color: #84ac15;
         }
+
+        .snapscan-button:hover {
+            background-color: blue !important;
+            color: white !important;
+        }
+
+        .payment-note {
+            display: block;
+            width: fit-content;
+            max-width: 100%;
+            margin: 0 auto 8px;
+            background-color: rgb(252, 248, 25);
+            color: rgb(5, 5, 5);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .payment-section {
+            flex: 1 1 100%;
+            text-align: center;
+        }
+
+        .footer-copyright .white-color.copyright-text {
+            color: rgb(236, 54, 54) !important;
+        }
+
+        .footer-copyright .white-color.copyright-text:hover {
+            color: blue !important;
+        }
     </style>
 </head>
 <body>
@@ -83,40 +113,33 @@
     <!-- Clean, Simple Functional Row -->
     <div class="button-group">
         <button class="btn-classic" onclick="window.location.href='Physical Diagnostics.html';">Diagnostic Testing</button>
-        
-        <!-- Simply opens a secure standard sandboxed payment engine directly -->
-        <button class="btn-classic" style="background-color: #47f502; font-weight: bold; color: black" onclick="redirectToPayment()">💳 Pay Securely Online (Visa/Mastercard)</button>
-        
+        <button class="btn-classic" onclick="window.location.href='Intake Form.html';">Book Repair</button>
         <button class="btn-classic" onclick="window.location.href='Hardware Repair & Quotation.html';">Get Quotation</button>
+
+        <div class="payment-section">
+            <p class="payment-note">Secure payment processing is handled by SnapScan. You will be redirected to their hosted payment page.</p>
+            <button class="btn-classic snapscan-button" style="background-color: #47f502; font-weight: bold; color: black" onclick="redirectToPayment()">Pay Securely with SnapScan</button>
+        </div>
     </div>
 
  <footer>
         <div class="footer-copyright">
-            &copy; 2026 Hardware Repair & Replacement Services. All rights reserved.
+            <p class="white-color copyright-text">
+            &copy; 2026 Hardware Repair & Replacement Services. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
+        const snapScanPaymentLink = 'https://your-real-snapscan-payment-link';
+
         function redirectToPayment() {
-            // This forms a direct secure link payload to PayFast's standard payment box interface
-            var merchantId = '10000100'; // Standard sandbox testing merchant ID
-            var merchantKey = '46f0cd694581a';
-            var amount = '450.00';
-            var itemName = 'Hardware Repair Service';
+            if (snapScanPaymentLink === 'PASTE_YOUR_SNAPSCAN_PAYMENT_LINK_HERE') {
+                window.open('https://www.snapscan.co.za/payment-links', '_blank', 'noopener');
+                return;
+            }
 
-            var payfastUrl = 'https://payfast.co.za' +
-                             '?merchant_id=' + merchantId +
-                             '&merchant_key=' + merchantKey +
-                             '&amount=' + amount +
-                             '&item_name=' + encodeURIComponent(itemName);
-
-            // Opens the checkout page cleanly in a new browser tab
-            window.open(payfastUrl, '_blank');
+            window.open(snapScanPaymentLink, '_blank', 'noopener');
         }
     </script>
 </body>
 </html>
-<footer></footer>
-<p class="white-color copyright-text">
-    <i>&copy; 2026 EMPIRE BYSONIC COMPUTING</i>
-</p>
