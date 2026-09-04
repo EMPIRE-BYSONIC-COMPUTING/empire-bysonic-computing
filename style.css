@@ -50,7 +50,7 @@
     color: blue;
 }
 
-.btn-classic {
+.service-button {
     position: relative;
     isolation: isolate;
     overflow: hidden;
@@ -70,7 +70,7 @@
     animation: shaderBorder 5s linear infinite;
 }
 
-.btn-classic::before {
+.service-button::before {
     position: absolute;
     content: '';
     inset: 2px;
@@ -81,14 +81,14 @@
     animation: shaderSweep 3.2s ease-in-out infinite;
 }
 
-.btn-classic:hover {
+.service-button:hover {
     background: linear-gradient(#17233b, #17233b) padding-box, linear-gradient(120deg, #00f0ff, #ff00b8, #ffbf00, #00f0ff) border-box;
     color: #ffffff;
     transform: translateY(-3px) scale(1.02);
     box-shadow: 0 8px 22px rgba(0, 240, 255, 0.3), 0 0 18px rgba(255, 0, 184, 0.2);
 }
 
-.btn-classic:focus-visible {
+.service-button:focus-visible {
     outline: 3px solid #ffbf00;
     outline-offset: 2px;
 }
