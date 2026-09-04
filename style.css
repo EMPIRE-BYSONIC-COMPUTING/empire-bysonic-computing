@@ -50,6 +50,31 @@
     color: blue;
 }
 
+.btn-classic {
+    display: inline-block;
+    margin: 6px 4px;
+    padding: 10px 20px;
+    border: 2px solid #111111;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #ffffff;
+    font: bold 16px Arial, sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-classic:hover {
+    background-color: #84ac15;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.btn-classic:focus-visible {
+    outline: 3px solid #ffbf00;
+    outline-offset: 2px;
+}
+
 /* ==========================================
    NEON LED BUTTONS
    ========================================== */
