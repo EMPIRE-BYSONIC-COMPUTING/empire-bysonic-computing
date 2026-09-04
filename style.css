@@ -55,14 +55,14 @@
     isolation: isolate;
     overflow: hidden;
     display: inline-block;
-    min-height: 64px;
-    margin: 8px 5px;
-    padding: 16px 32px;
+    min-height: 54px;
+    margin: 6px 4px;
+    padding: 12px 24px;
     border: 2px solid transparent;
     border-radius: 999px;
     background: linear-gradient(#f8f8fa, #eeeeF1) padding-box, conic-gradient(from 180deg, #ffffff, #8e98a8, #f5b900, #4f8bff, #f7f7ff, #b5beca, #ffffff) border-box;
     color: #25252b;
-    font: 600 20px Arial, sans-serif;
+    font: 600 18px Arial, sans-serif;
     line-height: 1.15;
     text-decoration: none;
     cursor: pointer;
