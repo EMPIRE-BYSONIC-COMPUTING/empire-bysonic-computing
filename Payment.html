@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Empire Bysonic Computing | Payments</title>
+        <link rel="stylesheet" href="style.css">
+    <style>
+        /* Base Page Styles */
+        body {
+            background-color: rgb(43, 73, 72);
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Banner Colors */
+        .amber-color {
+            background-color: #FFBF00;
+            padding: 10px;
+            color: black;
+            text-align: center;
+        }
+        
+        .beig-color {
+            background-color: beige;
+            padding: 15px;
+            text-align: center;
+            color: rgb(138, 66, 33);
+        }
+
+        /* Modern Flexbox Button Row Fixes invalid float/position rules */
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Typography & Helper Classes */
+        .white-color {
+            color: white;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        
+        .btn-classic {
+            background-color: #007bff;
+            color: #ffffff;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        /* Hover effect */
+        .btn-classic:hover {
+            background-color: #84ac15;
+        }
+
+        .snapscan-button:hover {
+            background-color: blue !important;
+            color: white !important;
+        }
+
+        .payment-note {
+            display: block;
+            width: fit-content;
+            max-width: 100%;
+            margin: 0 auto 8px;
+            background-color: rgb(252, 248, 25);
+            color: rgb(5, 5, 5);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .payment-section {
+            flex: 1 1 100%;
+            text-align: center;
+        }
+
+        .footer-copyright .white-color.copyright-text {
+            color: rgb(236, 54, 54) !important;
+        }
+
+        .footer-copyright .white-color.copyright-text:hover {
+            color: blue !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="amber-color">
+            <h2 style="margin: 0; text-decoration: underline;">Hardware Repair & Replacement Services</h2>
+        </div>
+        <div class="beig-color">
+            <p>This involves physical diagnostics, component-level troubleshooting, and swapping out failing parts.</p>
+            <p>Diagnostic & Stress Testing: Identifying unstable components using software loops (e.g., MemTest86 for RAM, Prime95 for CPUs, FurMark for GPUs).</p>
+            <p>Modular Component Swaps: Replacing faulty mechanical hard drives with high-speed NVMe SSDs, swapping dead power supply units (PSUs), upgrading RAM modules, and installing new motherboards.</p>
+            <p>Laptop Screen & Bezel Repairs: Sourcing and replacing cracked LCD/OLED panels, damaged digitizers, failing video cables (EDP), and broken chassis hinges. Battery & Port Replacement: Replacing degraded internal lithium-ion batteries and desoldering/resoldering damaged charging ports (USB-C, DC jacks) or audio jacks.</p>
+            <p>Micro-Soldering & Component-Level Repair: Repairing liquid-damaged logic boards by diagnosing short circuits, replacing blown capacitors, resistors, or power IC chips using a hot-air rework station.</p>
+        </div>
+    </header>
+
+    <!-- Clean, Simple Functional Row -->
+    <div class="button-group">
+        <button class="btn-classic" onclick="window.location.href='Physical Diagnostics.html';">Diagnostic Testing</button>
+        <button class="btn-classic" onclick="window.location.href='Intake Form.html';">Book Repair</button>
+        <button class="btn-classic" onclick="window.location.href='Hardware%20Repair%20%26%20Quotation.html';">Get Quotation</button>
+
+        <div class="payment-section">
+            <p class="payment-note">Secure payment processing is handled by SnapScan. You will be redirected to their hosted payment page.</p>
+            <button class="btn-classic snapscan-button" style="background-color: #47f502; font-weight: bold; color: black" onclick="redirectToPayment()">Pay Securely with SnapScan</button>
+        </div>
+    </div>
+
+ <footer>
+        <div class="footer-copyright">
+            <p class="white-color copyright-text">
+            &copy; 2026 Hardware Repair & Replacement Services. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const snapScanPaymentLink = 'https://your-real-snapscan-payment-link';
+
+        function redirectToPayment() {
+            if (snapScanPaymentLink === 'PASTE_YOUR_SNAPSCAN_PAYMENT_LINK_HERE') {
+                window.open('https://www.snapscan.co.za/payment-links', '_blank', 'noopener');
+                return;
+            }
+
+            window.open(snapScanPaymentLink, '_blank', 'noopener');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Empire Bysonic Computing | Quotation</title>
+  <style>
+    :root {
+      --bg-dark: #5c0d0d;
+      --card-bg: #1e293b;
+      --accent-cyan: #06b6d4;
+      --accent-green: #10b981;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 32px 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      color: var(--accent-green);
+      font-size: 2.5rem;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .quote-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .customer-summary {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+
+    .summary-box {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+    }
+
+    .summary-box .label {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .summary-box .value {
+      color: var(--text-main);
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 30px;
+    }
+
+    .section h2 {
+      margin: 0 0 16px;
+      color: var(--accent-cyan);
+      font-size: 1.5rem;
+    }
+
+    .list-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .item-card {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+    }
+
+    .item-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text-main);
+      font-size: 0.98rem;
+    }
+
+    .item-card .price {
+      color: var(--accent-green);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .item-card .meta {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+
+    .selected {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 0 1px var(--accent-cyan);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background: var(--accent-cyan);
+      color: #0f172a;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 18px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      border: 1px solid var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    /* LEARNING MARKER: print-only rules hide unrelated page content */
+    @media print {
+      @page {
+        margin: 12mm;
+      }
+
+      body {
+        background: #fff;
+        color: #000;
+        padding: 0;
+        font-size: 11pt;
+      }
+
+      header {
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom-color: #ccc;
+      }
+
+      h1 {
+        font-size: 1.7rem;
+        margin-bottom: 4px;
+      }
+
+      h1,
+      .section h2 {
+        color: #000;
+      }
+
+      .subtitle {
+        font-size: 0.9rem;
+      }
+
+      .subtitle,
+      .summary-box .label,
+      .item-card .meta {
+        color: #444;
+      }
+
+      .quote-panel,
+      .section,
+      .summary-box,
+      .item-card {
+        background: #fff;
+        border-color: #ccc;
+        box-shadow: none;
+      }
+
+      .quote-panel,
+      .section {
+        padding: 12px;
+        margin-bottom: 12px;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      .summary-grid,
+      .customer-summary {
+        gap: 6px;
+        margin-top: 8px;
+      }
+
+      .summary-box,
+      .item-card {
+        padding: 8px;
+      }
+
+      .summary-box .label {
+        margin-bottom: 3px;
+        font-size: 0.68rem;
+      }
+
+      .summary-box .value {
+        font-size: 0.9rem;
+      }
+
+      .section h2 {
+        margin-bottom: 8px;
+        font-size: 1.1rem;
+      }
+
+      .list-grid {
+        gap: 6px;
+      }
+
+      .item-card strong {
+        margin-bottom: 3px;
+        font-size: 0.85rem;
+      }
+
+      .item-card .price {
+        margin-bottom: 2px;
+        font-size: 0.85rem;
+      }
+
+      .item-card .meta {
+        font-size: 0.7rem;
+        line-height: 1.25;
+      }
+
+      .actions,
+      .section:not(.has-selection),
+      .section .item-card:not(.selected) {
+        display: none;
+      }
+
+      .selected {
+        border-color: #000;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🔬 Empire Bysonic Computing</h1>
+      <div class="subtitle">Repair Quotation Summary</div>
+    </header>
+
+    <div class="quote-panel">
+      <h2 style="margin:0 0 10px; color: var(--accent-green);">Quotation Overview</h2>
+      <div class="summary-grid">
+        <div class="summary-box">
+          <div class="label">Device Type</div>
+          <div id="selected-device" class="value">Not selected</div>
+        </div>
+        <div class="summary-box">
+          <div class="label">Primary Issue</div>
+          <div id="selected-issue" class="value">Not selected</div>
+        </div>
+        <div class="summary-box">
+          <div class="label">Estimated Total</div>
+          <div id="selected-total" class="value">R0.00</div>
+        </div>
+      </div>
+
+      <div class="customer-summary">
+        <div class="summary-box">
+          <div class="label">Customer Name</div>
+          <div class="value">New Customer</div>
+        </div>
+        <div class="summary-box">
+          <div class="label">Date</div>
+          <div id="today-date" class="value">--</div>
+        </div>
+        <div class="summary-box">
+          <div class="label">Service Type</div>
+          <div class="value">Computer Repair</div>
+        </div>
+        <div class="summary-box">
+          <div class="label">Preferred Contact</div>
+          <div class="value">Phone / Email</div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a href="Hardware%20Repair%20%26%20Quotation.html" class="btn">Back to Estimator</a>
+        <a href="Intake Form.html" class="btn secondary">Book Repair</a>
+        <button type="button" class="btn secondary" onclick="window.print()">Print Quotation</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Device Type</h2>
+      <div id="device-list" class="list-grid"></div>
+    </div>
+
+    <div class="section">
+      <h2>Primary Issue</h2>
+      <div id="issue-list" class="list-grid"></div>
+    </div>
+  </div>
+
+  <script>
+    const devicePriceLibrary = [
+      { device: "Dell OptiPlex 3050 / 5050", price: "R3,200 - R6,000", note: "Business desktop • PSU / SSD / RAM" },
+      { device: "HP ProDesk / EliteDesk", price: "R3,500 - R7,500", note: "Office tower • motherboard / battery / storage" },
+      { device: "Lenovo ThinkCentre", price: "R3,800 - R8,200", note: "Workstation • diagnostics / upgrades / cooling" },
+      { device: "Dell Latitude 3420 / 5480", price: "R4,800 - R8,500", note: "Business laptop • screen / battery / hinge" },
+      { device: "HP EliteBook 840 / 850", price: "R5,000 - R9,000", note: "Premium laptop • keyboard / board repair / SSD" },
+      { device: "Lenovo ThinkPad T14 / X1", price: "R6,200 - R11,500", note: "Ultrabook • display / dock / charging port" },
+      { device: "MacBook Air / Pro", price: "R9,000 - R22,000", note: "Apple repair • battery / trackpad / logic board" },
+      { device: "Microsoft Surface Pro / Laptop", price: "R8,500 - R18,000", note: "Tablet/laptop hybrid • screen / Type Cover / charging" },
+      { device: "iPad / Android tablet", price: "R3,500 - R9,500", note: "Tablet • display / digitizer / battery" },
+      { device: "Intel NUC / Mini PC", price: "R2,800 - R6,200", note: "Small form factor • Wi-Fi / SSD / thermal fix" }
+    ];
+
+    const issueLibrary = [
+      { issue: "Power Issue / Dead Board", price: "R150", note: "Power delivery / charging / no boot" },
+      { issue: "Broken Port (HDMI, USB-C, RJ45)", price: "R200", note: "Port replacement / solder repair / connector work" },
+      { issue: "Overheating / Thermal Throttling", price: "R100", note: "Cooling system / airflow / thermal paste" },
+      { issue: "Storage Corruption / OS Failure", price: "R80", note: "Drive recovery / reinstall / corruption repair" },
+      { issue: "Main Board Diagnostics", price: "R650", note: "Deep board-level diagnostics and fault isolation" }
+    ];
+
+    function getQueryParam(name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    }
+
+    function renderDeviceList() {
+      const selected = getQueryParam('device');
+      const container = document.getElementById('device-list');
+      const section = container.closest('.section');
+
+      // LEARNING MARKER: match the selected library item even when its option includes pricing.
+      container.innerHTML = devicePriceLibrary.map(item => {
+        const isSelected = selected && (
+          item.device.toLowerCase().includes(selected.toLowerCase()) ||
+          selected.toLowerCase().includes(item.device.toLowerCase())
+        );
+
+        return `
+          <div class="item-card ${isSelected ? 'selected' : ''}">
+            <strong>${item.device}</strong>
+            <div class="price">${item.price}</div>
+            <div class="meta">${item.note}</div>
+          </div>
+        `;
+      }).join('');
+
+      section.classList.toggle('has-selection', Boolean(container.querySelector('.selected')));
+    }
+
+    function renderIssueList() {
+      const selected = getQueryParam('issue');
+      const container = document.getElementById('issue-list');
+      const section = container.closest('.section');
+
+      container.innerHTML = issueLibrary.map(item => {
+        const isSelected = selected && item.issue.toLowerCase().includes(selected.toLowerCase());
+
+        return `
+          <div class="item-card ${isSelected ? 'selected' : ''}">
+            <strong>${item.issue}</strong>
+            <div class="price">${item.price}</div>
+            <div class="meta">${item.note}</div>
+          </div>
+        `;
+      }).join('');
+
+      section.classList.toggle('has-selection', Boolean(container.querySelector('.selected')));
+    }
+
+    function updateSummary() {
+      const device = getQueryParam('device');
+      const issue = getQueryParam('issue');
+      const total = getQueryParam('total');
+
+      const deviceLabel = device ? decodeURIComponent(device) : 'Not selected';
+      const issueLabel = issue ? decodeURIComponent(issue) : 'Not selected';
+
+      document.getElementById('selected-device').innerText = deviceLabel;
+      document.getElementById('selected-issue').innerText = issueLabel;
+      document.getElementById('selected-total').innerText = total ? 'R' + Number(total).toFixed(2) : 'R0.00';
+
+      const today = new Date();
+      const formattedDate = today.toLocaleDateString('en-ZA', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      });
+      document.getElementById('today-date').innerText = formattedDate;
+    }
+
+    renderDeviceList();
+    renderIssueList();
+    updateSummary();
+  </script>
+</body>
+</html>

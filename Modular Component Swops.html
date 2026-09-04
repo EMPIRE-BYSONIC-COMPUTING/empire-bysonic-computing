@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modular Component Swops</title>
+    
+    <!-- 1. Links your global rules (LED buttons, gallery grid, and copyright hover) -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+
+        .black-color { color: black; }
+        
+        /* 2. ONLY keep page-specific styles here. Conflicting layout code was removed */
+        body { 
+            background-color: rgb(188, 192, 192); 
+            color: rgb(10, 9, 9); 
+            font-family: sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+        }
+        
+        /* Banner Colors */
+        .amber-color { background-color: #FFBF00; padding: 10px; color: black; text-align: center; }
+        .beig-color { background-color: beige; padding: 15px; text-align: center; color: rgb(138, 66, 33); }
+        .red-color { background-color: rgb(219, 77, 77); padding: 20px; border-radius: 5px; }
+
+        /* Row Layout container for your LED Buttons */
+        .button-group { 
+            display: flex; 
+            justify-content: space-between; 
+            gap: 10px; 
+            margin-bottom: 20px; 
+        }
+
+        /* Typography & Helper Classes */
+        .article-text { color: white; font-weight: bold; margin-top: 5px; }
+        .btn-classic { background-color: #007bff; color: #ffffff; font-size: 16px; font-family: Arial, sans-serif; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; transition: background-color 0.2s ease; }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="beig-color">
+            <h2 style="margin: 0; font-family:'Arial Black', sans-serif; text-decoration: underline;">
+                Modular Component Swops
+            </h2>
+        </div>
+    </header>
+
+    <main style="margin-top: 20px;">
+        <p>
+            <strong>Modular component swaps refer</strong> to replacing individual, standardized parts of a system to upgrade, repair, or customize it without changing the entire structure. This design philosophy is widely used in electronics, computing, automotive engineering, and product manufacturing to extend product lifespans and reduce electronic waste.
+            </p>
+        <strong>Core Benefits of Component Swaps</strong><hr>
+        <li><strong>Cost efficiency:</strong>Replace only broken elements.</li>
+        <li><strong>Easy upgrades:</strong>Swap old parts for new ones.</li>
+        <li><strong>Customization:</strong>Mix and match parts for personal needs.</li>
+        <li><strong>Sustainability:</strong>Dramatically reduces long-term electronic waste.</li>
+        <p>For computers, modular component swaps allow you to upgrade performance, repair faults, and extend your system's lifespan by replacing individual hardware parts instead of buying an entirely new machine. While desktop PCs have always been inherently modular, modern laptops are also shifting back toward modularity.</p>
+
+
+        <strong>Desktop PC Swaps (Highly Modular)</strong><hr>
+ <li><strong>Graphics Cards (GPU):</strong>Unclip from the PCIe slot to swap for better gaming or rendering power.</li>
+<li><strong>Memory (RAM):</strong>Snap out old sticks to insert higher-capacity modules for better multitasking.</li>
+<li><strong>Storage (SSD/HDD):</strong>Swap or add M.2 NVMe or SATA drives to instantly expand your file capacity.</li>
+<li><strong>Power Supplies (PSU): </strong>Modular power supplies allow you to swap the entire unit or plug in only the cables you need.</li>
+<li><strong>Processor (CPU): </strong>Swap for a faster chip, provided it matches your motherboard's socket type.</li>
+
+<strong>Modular Laptop Ecosystems</strong><hr>
+<p>If you want a highly repairable laptop designed specifically for component swaps, consider these platforms:</p>
+
+<strong>Framework Laptop 13</strong><hr>
+<li><strong>Expansion Cards:</strong> Swap ports (USB-C, HDMI, SD Card) on the fly without tools.</li>
+<li><strong>Mainboard Upgrades:</strong>Swap the entire motherboard and CPU to upgrade to a newer processor generation.</li>
+
+<strong>Framework Laptop 16</strong><hr>
+<li><strong>Graphics Module:</strong> Swap between a dedicated graphics card for gaming or a slim expansion bay for battery life.</li>
+<li><strong>Input Modules:</strong>Rearrange or swap the keyboard, numpad, and trackpad placement.</li>
+
+        <div style="margin-top: 20px;">
+            <button class="btn-classic" onclick="window.location.href='Intake Form.html';">Book Repair</button>
+        </div>
+
+    </main>
+
+</body>
+<footer></footer>
+<p class="black-color copyright-text">
+    <i>&copy; 2026 EMPIRE BYSONIC COMPUTING</i>
+</p>
