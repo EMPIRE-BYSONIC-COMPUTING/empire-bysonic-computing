@@ -9,9 +9,21 @@ const port = process.env.PORT || 3000;
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const currentFile = fileURLToPath(import.meta.url);
 const currentDirectory = path.dirname(currentFile);
+const frontendOrigin = process.env.FRONTEND_ORIGIN || 'http://localhost:3000';
 
 app.use(express.json({ limit: '20kb' }));
 app.use(express.static(currentDirectory));
+app.use((request, response, next) => {
+  response.setHeader('Access-Control-Allow-Origin', frontendOrigin);
+  response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  response.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  if (request.method === 'OPTIONS') return response.sendStatus(204);
+  next();
+});
+
+app.get('/health', (request, response) => {
+  response.json({ status: 'ok' });
+});
 
 app.post('/api/chat', async (request, response) => {
   if (!process.env.OPENAI_API_KEY) {

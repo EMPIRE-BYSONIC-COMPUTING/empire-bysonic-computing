@@ -3,6 +3,7 @@ const chatPanel = document.querySelector('[data-chat-panel]');
 const chatForm = document.querySelector('[data-chat-form]');
 const chatInput = document.querySelector('[data-chat-input]');
 const chatMessages = document.querySelector('[data-chat-messages]');
+const chatEndpoint = window.BYSONIC_AGENT_API_URL || '/api/chat';
 
 function addMessage(text, sender) {
   const message = document.createElement('p');
@@ -29,7 +30,7 @@ chatForm?.addEventListener('submit', async (event) => {
   chatInput.disabled = true;
 
   try {
-    const response = await fetch('/api/chat', {
+    const response = await fetch(chatEndpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message })
