@@ -55,37 +55,37 @@
     isolation: isolate;
     overflow: hidden;
     display: inline-block;
-    margin: 6px 4px;
-    padding: 10px 20px;
+    min-height: 64px;
+    margin: 8px 5px;
+    padding: 16px 32px;
     border: 2px solid transparent;
-    border-radius: 4px;
-    background: linear-gradient(#111827, #111827) padding-box, linear-gradient(120deg, #00f0ff, #ff00b8, #ffbf00, #00f0ff) border-box;
-    background-size: 100% 100%, 220% 100%;
-    color: #ffffff;
-    font: bold 16px Arial, sans-serif;
+    border-radius: 999px;
+    background: linear-gradient(#f8f8fa, #eeeeF1) padding-box, conic-gradient(from 180deg, #ffffff, #8e98a8, #f5b900, #4f8bff, #f7f7ff, #b5beca, #ffffff) border-box;
+    color: #25252b;
+    font: 600 20px Arial, sans-serif;
+    line-height: 1.15;
     text-decoration: none;
     cursor: pointer;
-    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.25), 0 0 0 rgba(0, 240, 255, 0);
-    transition: color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    animation: shaderBorder 5s linear infinite;
+    box-shadow: 0 10px 18px rgba(42, 48, 60, 0.22), inset 0 1px 0 #ffffff, inset 0 -2px 4px rgba(97, 105, 118, 0.2);
+    background-size: 100% 100%, 240% 240%;
+    animation: chromeEdge 5s linear infinite;
 }
 
 .service-button::before {
     position: absolute;
     content: '';
-    inset: 2px;
+    inset: 4px;
     z-index: -1;
-    border-radius: 2px;
-    background: linear-gradient(110deg, #111827 0%, #111827 35%, rgba(0, 240, 255, 0.5) 48%, #ff00b8 53%, #111827 67%, #111827 100%);
-    background-size: 220% 100%;
-    animation: shaderSweep 3.2s ease-in-out infinite;
+    border-radius: 999px;
+    background: linear-gradient(110deg, #f8f8fa 0%, #f8f8fa 37%, rgba(255, 255, 255, 0.95) 48%, rgba(255, 255, 255, 0.45) 53%, #e7e7eb 67%, #f8f8fa 100%);
+    background-size: 240% 100%;
+    animation: chromeSweep 3.2s ease-in-out infinite;
 }
 
 .service-button:hover {
-    background: linear-gradient(#17233b, #17233b) padding-box, linear-gradient(120deg, #00f0ff, #ff00b8, #ffbf00, #00f0ff) border-box;
-    color: #ffffff;
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 8px 22px rgba(0, 240, 255, 0.3), 0 0 18px rgba(255, 0, 184, 0.2);
+    color: #111118;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 14px 24px rgba(42, 48, 60, 0.28), inset 0 1px 0 #ffffff, inset 0 -2px 4px rgba(97, 105, 118, 0.2);
 }
 
 .service-button:focus-visible {
@@ -93,12 +93,12 @@
     outline-offset: 2px;
 }
 
-@keyframes shaderBorder {
-    0%, 100% { background-position: 0 0, 100% 0; }
-    50% { background-position: 0 0, 0 0; }
+@keyframes chromeEdge {
+    0%, 100% { background-position: 0 0, 100% 50%; }
+    50% { background-position: 0 0, 0 50%; }
 }
 
-@keyframes shaderSweep {
+@keyframes chromeSweep {
     0%, 100% { background-position: 100% 0; }
     50% { background-position: 0 0; }
 }
