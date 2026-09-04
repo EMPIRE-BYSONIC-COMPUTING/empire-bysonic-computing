@@ -51,28 +51,56 @@
 }
 
 .btn-classic {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     display: inline-block;
     margin: 6px 4px;
     padding: 10px 20px;
-    border: 2px solid #111111;
+    border: 2px solid transparent;
     border-radius: 4px;
-    background-color: #007bff;
+    background: linear-gradient(#111827, #111827) padding-box, linear-gradient(120deg, #00f0ff, #ff00b8, #ffbf00, #00f0ff) border-box;
+    background-size: 100% 100%, 220% 100%;
     color: #ffffff;
     font: bold 16px Arial, sans-serif;
     text-decoration: none;
     cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.25), 0 0 0 rgba(0, 240, 255, 0);
+    transition: color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    animation: shaderBorder 5s linear infinite;
+}
+
+.btn-classic::before {
+    position: absolute;
+    content: '';
+    inset: 2px;
+    z-index: -1;
+    border-radius: 2px;
+    background: linear-gradient(110deg, #111827 0%, #111827 35%, rgba(0, 240, 255, 0.5) 48%, #ff00b8 53%, #111827 67%, #111827 100%);
+    background-size: 220% 100%;
+    animation: shaderSweep 3.2s ease-in-out infinite;
 }
 
 .btn-classic:hover {
-    background-color: #84ac15;
+    background: linear-gradient(#17233b, #17233b) padding-box, linear-gradient(120deg, #00f0ff, #ff00b8, #ffbf00, #00f0ff) border-box;
     color: #ffffff;
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 22px rgba(0, 240, 255, 0.3), 0 0 18px rgba(255, 0, 184, 0.2);
 }
 
 .btn-classic:focus-visible {
     outline: 3px solid #ffbf00;
     outline-offset: 2px;
+}
+
+@keyframes shaderBorder {
+    0%, 100% { background-position: 0 0, 100% 0; }
+    50% { background-position: 0 0, 0 0; }
+}
+
+@keyframes shaderSweep {
+    0%, 100% { background-position: 100% 0; }
+    50% { background-position: 0 0; }
 }
 
 /* ==========================================
