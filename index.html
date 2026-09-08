@@ -487,6 +487,234 @@
     </style>
 
 </head>
+<div class="bysonic-header-search-nav">
+    <style>
+        /* General layout adjustments for dark theme header matching Empire Bysonic Computing style */
+        .bysonic-header-search-nav {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1a1a1a;
+            border-bottom: 1px solid #333333;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .bysonic-brand-title {
+            color: #ffffff;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        .bysonic-search-form-wrapper {
+            flex: 1;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .bysonic-search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #0a0a0a;
+            border: 1px solid #444444;
+            border-radius: 20px;
+            padding: 4px 6px 4px 16px;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .bysonic-search-bar:focus-within {
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
+        }
+
+        .bysonic-search-field {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #ffffff;
+            font-size: 0.95rem;
+            padding: 6px 0;
+        }
+
+        .bysonic-search-field::placeholder {
+            color: #777777;
+        }
+
+        .bysonic-search-btn {
+            background-color: #222222;
+            color: #ffffff;
+            border: 1px solid #444444;
+            outline: none;
+            border-radius: 15px;
+            padding: 6px 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .bysonic-search-btn:hover {
+            background-color: #333333;
+            border-color: #555555;
+        }
+
+        /* Styling for the live filter target items */
+        .bysonic-search-match-highlight {
+            background-color: rgba(255, 235, 59, 0.3) !important;
+            color: #ffffff !important;
+            border-radius: 2px;
+        }
+
+        /* Smooth empty state element */
+        .bysonic-no-results-alert {
+            display: none;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 16px;
+            background-color: #2d1919;
+            border: 1px solid #5a2c2c;
+            border-radius: 6px;
+            color: #ff8888;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 600px) {
+            .bysonic-header-search-nav {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+                padding: 16px;
+            }
+            .bysonic-search-form-wrapper {
+                max-width: 100%;
+            }
+        }
+    </style>
+
+    <div class="bysonic-brand-title">EMPIRE BYSONIC COMPUTING</div>
+    
+    <div class="bysonic-search-form-wrapper">
+        <div class="bysonic-search-bar">
+            <input 
+                type="text" 
+                id="bysonicHeaderSearchInput" 
+                class="bysonic-search-field" 
+                placeholder="Search services, parts, or policy details..." 
+                autocomplete="off"
+            >
+            <button type="button" id="bysonicClearSearchBtn" class="bysonic-search-btn" style="display:none; margin-right: 5px;">Clear</button>
+            <button type="button" class="bysonic-search-btn">Search</button>
+        </div>
+    </div>
+</div>
+
+<!-- Embedded Live Dynamic Filtering Engine -->
+<div id="bysonicNoResultsMessage" class="bysonic-no-results-alert">
+    No matching repairs, parts, or policy details found. Please try a different term.
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const searchInput = document.getElementById("bysonicHeaderSearchInput");
+    const clearBtn = document.getElementById("bysonicClearSearchBtn");
+    const noResultsMsg = document.getElementById("bysonicNoResultsMessage");
+
+    // Identifies sections likely containing content to filter (e.g. policy container or repair blocks)
+    // You can adjust these selectors or add classes to items you want explicitly search-filtered
+    const targetSelectors = [
+        '.policy-container', 
+        '.policy-container li', 
+        '.policy-container h2',
+        '.policy-container p',
+        '#index-services-list', /* Placeholder for existing lists if applicable */
+        'section h2',
+        'section li'
+    ];
+
+    searchInput.addEventListener("input", function() {
+        const query = searchInput.value.toLowerCase().trim();
+        
+        if (query === "") {
+            clearBtn.style.display = "none";
+            noResultsMsg.style.display = "none";
+            resetVisibility();
+            return;
+        }
+
+        clearBtn.style.display = "inline-block";
+        let visibleCount = 0;
+
+        // Target individual searchable components inside the main structural wrapper
+        // For optimal performance, we prioritize list elements, cards, and paragraphs
+        const contentBlocks = document.querySelectorAll(".policy-container, section");
+
+        contentBlocks.forEach(block => {
+            // Check sub-elements inside containers like sections or cards
+            const textContainers = block.querySelectorAll("li, p, h2, h3");
+            let blockHasMatches = false;
+
+            if (textContainers.length > 0) {
+                textContainers.forEach(el => {
+                    const originalText = el.innerText || el.textContent;
+                    if (originalText.toLowerCase().includes(query)) {
+                        el.style.display = ""; // Show element
+                        blockHasMatches = true;
+                        visibleCount++;
+                    } else {
+                        el.style.display = "none"; // Hide non-matching child element
+                    }
+                });
+
+                // Control parent container visibility depending on child matches
+                if (blockHasMatches) {
+                    block.style.display = "";
+                } else {
+                    block.style.display = "none";
+                }
+            } else {
+                // Fallback for flat layout elements without deep nested structures
+                const blockText = block.innerText || block.textContent;
+                if (blockText.toLowerCase().includes(query)) {
+                    block.style.display = "";
+                    visibleCount++;
+                } else {
+                    block.style.display = "none";
+                }
+            }
+        });
+
+        // Toggle visibility block for empty matching states
+        if (visibleCount === 0) {
+            noResultsMsg.style.display = "block";
+        } else {
+            noResultsMsg.style.display = "none";
+        }
+    });
+
+    clearBtn.addEventListener("click", function() {
+        searchInput.value = "";
+        clearBtn.style.display = "none";
+        noResultsMsg.style.display = "none";
+        resetVisibility();
+        searchInput.focus();
+    });
+
+    function resetVisibility() {
+        const allElements = document.querySelectorAll(".policy-container, section, .policy-container li, .policy-container p, .policy-container h2, .policy-container h3");
+        allElements.forEach(el => {
+            el.style.display = "";
+        });
+    }
+});
+</script>
 
 <body>
 
