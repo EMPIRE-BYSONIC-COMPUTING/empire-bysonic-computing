@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2026 
+ *   All rights reserved.
+ */
 /* ==========================================
    GLOBAL UTILITIES
    ========================================== */
@@ -255,18 +259,30 @@ footer {
             box-shadow: 0 0 15px #0066ff, 0 0 30px #0066ff;
             text-shadow: none;
         }
+/* 1. Target the parent nav container to center the buttons on the page */
+nav[aria-label="Computer service guides"] {
+    display: flex;
+    flex-wrap: wrap;           
+    justify-content: center;   
+    align-items: center;       
+    gap: 15px;                 
+    margin: 25px auto;         
+    width: 90%;
+}
 
-        /* Instagram LED Button (Pink/Purple Glow) */
-        .btn-instagram {
-            color: #ff007f;
-            border: 2px solid #ff007f;
-            background: transparent;
-            box-shadow: 0 0 5px #ff007f, inset 0 0 5px rgba(255, 0, 127, 0.2);
-            text-shadow: 0 0 5px #ff007f;
-        }
-        .btn-instagram:hover {
-            background: #ff007f;
-            color: #111;
-            box-shadow: 0 0 15px #ff007f, 0 0 30px #ff007f;
-            text-shadow: none;
-        }
+/* 2. Style the individual anchor buttons and FORCE the text to center */
+.service-button {
+    display: inline-flex;      /* Changes the button into a flex container */
+    justify-content: center;   /* Centers text horizontally inside the button */
+    align-items: center;       /* Centers text vertically inside the button */
+    text-align: center;        /* Backup for multi-line text wrapping alignment */
+    text-decoration: none;     
+    
+    /* Your dimensions */
+    flex: 1;
+    min-width: 200px;
+    max-width: 150px;
+    height: 60px;
+    padding: 0px 15px 0px;
+    border-radius: 102px;
+}
