@@ -151,6 +151,13 @@
     color: blue;
     box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
 }
+.logo-img {
+    height: 60px;       /* Set a fixed height that fits your layout */
+    width: auto;         /* Automatically calculates width to prevent stretching */
+    display: inline-block;
+    vertical-align: middle;
+}
+
 @keyframes rotateLED {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
