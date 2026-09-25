@@ -152,7 +152,7 @@
     box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
 }
 .logo-img {
-    height: 40px;
+    height: 60px;
     width: auto;
     object-fit: contain;
     flex-shrink: 0; /* Prevents Flexbox headers from squishing the logo width */
