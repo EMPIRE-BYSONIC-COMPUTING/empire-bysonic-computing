@@ -156,7 +156,7 @@
     height: 50px !important;      /* Hard-locks the exact presentation height */
     aspect-ratio: 1 / 1 !important; /* Force-locks the square proportion bounds */
     object-fit: contain !important; /* Ensures the graphic scales safely inside */
-    flex-shrink: 0 !important;    /* Defends the logo from flex-container squishing */
+    flex-shrink: 0;    /* Defends the logo from flex-container squishing */
     display: inline-block;
     vertical-align: middle;
 }
