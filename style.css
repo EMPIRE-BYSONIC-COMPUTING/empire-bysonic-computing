@@ -152,11 +152,8 @@
     box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
 }
 .logo-img {
-    width: 50px !important;       /* Hard-locks the exact presentation width */
-    height: 50px !important;      /* Hard-locks the exact presentation height */
-    aspect-ratio: 1 / 1 !important; /* Force-locks the square proportion bounds */
-    object-fit: contain !important; /* Ensures the graphic scales safely inside */
-    flex-shrink: 0;    /* Defends the logo from flex-container squishing */
+    height: 60px;       /* Set a fixed height that fits your layout */
+    width: auto;         /* Automatically calculates width to prevent stretching */
     display: inline-block;
     vertical-align: middle;
 }
