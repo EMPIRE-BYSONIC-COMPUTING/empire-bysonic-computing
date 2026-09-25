@@ -154,6 +154,7 @@
 .logo-img {
     height: 60px;       /* Set a fixed height that fits your layout */
     width: auto;         /* Automatically calculates width to prevent stretching */
+    object-fit: contain; /* Prevents squishing/stretching within the bounds */
     display: inline-block;
     vertical-align: middle;
 }
