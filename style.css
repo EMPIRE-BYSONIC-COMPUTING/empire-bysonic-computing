@@ -151,6 +151,9 @@
     color: blue;
     box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
 }
+
+}
+
 @keyframes rotateLED {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -275,6 +278,7 @@ nav[aria-label="Computer service guides"] {
     margin: 25px auto;         
     width: 90%;
 }
+<<<<<<< HEAD
 
 /* 2. Style the individual anchor buttons and FORCE the text to center */
 .service-button {
@@ -292,3 +296,52 @@ nav[aria-label="Computer service guides"] {
     padding: 0px 15px 0px;
     border-radius: 102px;
 }
+=======
+
+/* 2. Style the individual anchor buttons and FORCE the text to center */
+.service-button {
+    display: inline-flex;      /* Changes the button into a flex container */
+    justify-content: center;   /* Centers text horizontally inside the button */
+    align-items: center;       /* Centers text vertically inside the button */
+    text-align: center;        /* Backup for multi-line text wrapping alignment */
+    text-decoration: none;     
+    
+    /* Your dimensions */
+    flex: 1;
+    min-width: 200px;
+    max-width: 150px;
+    height: 60px;
+    padding: 0px 15px 0px;
+    border-radius: 102px;
+}
+/* Align everything vertically down the center of the panel */
+.beig-color.led-heading-panel {
+    display: flex;
+    flex-direction: column;   /* Stacks elements vertically */
+    align-items: center;      /* Centers everything horizontally */
+    justify-content: center;  /* Centers items vertically if height changes */
+    padding: 20px;
+    text-align: center;       /* Ensures text strings remain centered */
+}
+
+/* Give the logo link some space from the text below it */
+.logo-link {
+    display: inline-block;
+    margin-bottom: 12px;      /* Spacing between the logo and the H2 heading */
+    transition: transform 0.25s ease;
+}
+
+/* Beautiful sizing for your logo graphic */
+.logo-img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;      /* Keeps the aspect ratio perfect */
+    border-radius: 6px;       /* Smooth corners to match your UI buttons */
+}
+
+/* Soft hover effect when a user hovers over the logo */
+.logo-link:hover .logo-img {
+    transform: scale(1.05);
+}
+
+>>>>>>> 62c5cdf0a314bb8c5cec95fb789a88827399718d
