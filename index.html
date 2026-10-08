@@ -1106,6 +1106,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         const downloadableFiles = files.filter(function (file) {
                             return file.type === "file" &&
                                 !file.name.startsWith(".") &&
+                                file.name.toLowerCase() !== "readme.md" &&
                                 file.download_url;
                         });
 
