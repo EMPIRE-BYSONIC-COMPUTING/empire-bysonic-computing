@@ -28,9 +28,18 @@ A static website for Empire Bysonic Computing, a computer repair, maintenance, u
 - `Physical Diagnostics.html` - Diagnostic services page
 - `Repairs & Maintenance.html` - Repairs and maintenance page
 - `Modular Component Swops.html` - Component replacement page
+- `downloads.html` and `downloads.js` - Categorized public software downloads
 - `sitemap.xml` - Search-engine sitemap
 - `robots.txt` - Search-engine crawling instructions
 - `images/` - Local website images
+
+## Categorized Downloads
+
+Add files to folders under `downloads/`, such as `downloads/Windows/` or
+`downloads/Drivers/`. Both the homepage and `downloads.html` group files by
+their first-level folder; files may also be organized in nested folders within
+a category. Files placed directly in `downloads/` appear under "Other
+Downloads".
 
 ## GitHub Pages
 

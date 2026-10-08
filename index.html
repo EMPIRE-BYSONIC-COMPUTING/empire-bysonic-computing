@@ -293,6 +293,11 @@
             background: #ffd34d;
             transform: translateY(-1px);
         }
+        .download-category-heading {
+            grid-column: 1 / -1;
+            margin: 8px 0 0;
+            color: #ffbf00;
+        }
         .product-item {
             background: rgba(255, 255, 255, 0.1);
             padding: 10px;
@@ -1040,92 +1045,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <p id="downloads-status" role="status" aria-live="polite">Loading available downloads…</p>
             <div class="download-grid" id="downloads-grid"></div>
         </section>
-        <script>
-            (function () {
-                const repository = "EMPIRE-BYSONIC-COMPUTING/empire-bysonic-computing";
-                const status = document.getElementById("downloads-status");
-                const grid = document.getElementById("downloads-grid");
-
-                function formatSize(bytes) {
-                    if (bytes < 1024) return bytes + " B";
-                    const units = ["KB", "MB", "GB"];
-                    let size = bytes / 1024;
-                    let unit = 0;
-                    while (size >= 1024 && unit < units.length - 1) {
-                        size /= 1024;
-                        unit += 1;
-                    }
-                    return size.toFixed(1) + " " + units[unit];
-                }
-
-                function createDownloadCard(file) {
-                    const extension = file.name.includes(".")
-                        ? file.name.split(".").pop().toUpperCase()
-                        : "FILE";
-                    const card = document.createElement("article");
-                    card.className = "download-card";
-
-                    const icon = document.createElement("div");
-                    icon.className = "download-icon";
-                    icon.setAttribute("aria-hidden", "true");
-                    icon.textContent = "⬇";
-
-                    const title = document.createElement("h4");
-                    title.textContent = file.name;
-
-                    const description = document.createElement("p");
-                    description.textContent = "Available to download from Empire Bysonic Computing.";
-
-                    const metadata = document.createElement("div");
-                    metadata.className = "download-meta";
-                    const type = document.createElement("span");
-                    type.textContent = extension;
-                    const size = document.createElement("span");
-                    size.textContent = formatSize(file.size);
-                    metadata.append(type, size);
-
-                    const link = document.createElement("a");
-                    link.className = "download-button";
-                    link.href = file.download_url;
-                    link.setAttribute("download", file.name);
-                    link.textContent = "Download";
-                    link.setAttribute("aria-label", "Download " + file.name);
-
-                    card.append(icon, title, description, metadata, link);
-                    return card;
-                }
-
-                fetch("https://api.github.com/repos/" + repository + "/contents/downloads?per_page=100")
-                    .then(function (response) {
-                        if (!response.ok) {
-                            throw new Error("GitHub returned HTTP " + response.status);
-                        }
-                        return response.json();
-                    })
-                    .then(function (files) {
-                        const downloadableFiles = files.filter(function (file) {
-                            return file.type === "file" &&
-                                !file.name.startsWith(".") &&
-                                file.name.toLowerCase() !== "readme.md" &&
-                                file.download_url;
-                        });
-
-                        if (downloadableFiles.length === 0) {
-                            status.textContent = "No downloads are available yet.";
-                            return;
-                        }
-
-                        downloadableFiles.forEach(function (file) {
-                            grid.appendChild(createDownloadCard(file));
-                        });
-                        status.textContent = "";
-                    })
-                    .catch(function (error) {
-                        console.error("Could not load the downloads folder:", error);
-                        status.textContent = "Downloads could not be loaded right now. Please try again later.";
-                    });
-            })();
-        </script>
+        <script src="downloads.js" defer></script>
 
         <p class="blue-color"><mark>Below is a list of service options to your needs, select for repairs or warranty to be used:</mark></p>
         

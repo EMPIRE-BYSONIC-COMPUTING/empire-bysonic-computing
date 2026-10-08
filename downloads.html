@@ -28,6 +28,21 @@
             outline: 3px solid #111;
             outline-offset: 3px;
         }
+        .download-category-heading {
+            grid-column: 1 / -1;
+            margin: 8px 0 0;
+            color: #ffbf00;
+        }
+        .download-page-card {
+            padding: 20px;
+            border-radius: 12px;
+            background: beige;
+            color: #333;
+        }
+        .download-page-card h2,
+        .download-page-card p {
+            margin-top: 0;
+        }
     </style>
 </head>
 <body>
@@ -45,71 +60,6 @@
         </section>
         <p><a class="service-button" href="index.html">Back to homepage</a></p>
     </main>
-    <script>
-        (function () {
-            const repository = "EMPIRE-BYSONIC-COMPUTING/empire-bysonic-computing";
-            const status = document.getElementById("downloads-status");
-            const list = document.getElementById("downloads-list");
-
-            function formatSize(bytes) {
-                if (bytes < 1024) return bytes + " B";
-                const units = ["KB", "MB", "GB"];
-                let size = bytes / 1024;
-                let unit = 0;
-                while (size >= 1024 && unit < units.length - 1) {
-                    size /= 1024;
-                    unit += 1;
-                }
-                return size.toFixed(1) + " " + units[unit];
-            }
-
-            fetch("https://api.github.com/repos/" + repository + "/contents/downloads?per_page=100")
-                .then(function (response) {
-                    if (!response.ok) {
-                        throw new Error("GitHub returned HTTP " + response.status);
-                    }
-                    return response.json();
-                })
-                .then(function (files) {
-                    const downloadableFiles = files.filter(function (file) {
-                        return file.type === "file" &&
-                            !file.name.startsWith(".") &&
-                            file.name.toLowerCase() !== "readme.md";
-                    });
-
-                    if (downloadableFiles.length === 0) {
-                        status.textContent = "No downloads are currently available.";
-                        return;
-                    }
-
-                    downloadableFiles.forEach(function (file) {
-                        const article = document.createElement("article");
-                        article.className = "beig-color";
-
-                        const title = document.createElement("h2");
-                        title.textContent = file.name;
-
-                        const details = document.createElement("p");
-                        details.textContent = formatSize(file.size);
-
-                        const link = document.createElement("a");
-                        link.className = "download-button";
-                        link.href = "downloads/" + encodeURIComponent(file.name);
-                        link.setAttribute("download", file.name);
-                        link.textContent = "Download";
-                        link.setAttribute("aria-label", "Download " + file.name);
-
-                        article.append(title, details, link);
-                        list.appendChild(article);
-                    });
-
-                    status.textContent = "";
-                })
-                .catch(function (error) {
-                    console.error("Could not load the downloads folder:", error);
-                    status.textContent = "Downloads could not be loaded right now. Please try again later.";
-                });
-        })();
-    </script>
+    <script src="downloads.js" defer></script>
 </body>
 </html>
