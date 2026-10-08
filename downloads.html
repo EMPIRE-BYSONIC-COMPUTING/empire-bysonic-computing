@@ -6,6 +6,29 @@
     <meta name="description" content="Download software made available by Empire Bysonic Computing.">
     <title>Software Downloads | Empire Bysonic Computing</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .download-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 12px 24px;
+            border-radius: 10px;
+            background: #ffbf00;
+            color: #111;
+            text-decoration: none;
+            font-weight: 800;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+        .download-button:hover {
+            background: #ffd34d;
+            transform: translateY(-1px);
+        }
+        .download-button:focus-visible {
+            outline: 3px solid #111;
+            outline-offset: 3px;
+        }
+    </style>
 </head>
 <body>
     <header class="amber-color">
@@ -70,7 +93,7 @@
                         details.textContent = formatSize(file.size);
 
                         const link = document.createElement("a");
-                        link.className = "service-button";
+                        link.className = "download-button";
                         link.href = "downloads/" + encodeURIComponent(file.name);
                         link.setAttribute("download", file.name);
                         link.textContent = "Download";
