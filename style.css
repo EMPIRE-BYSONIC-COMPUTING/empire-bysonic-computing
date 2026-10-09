@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2026
+ *   All rights reserved.
+ */
 /* ==========================================
    GLOBAL UTILITIES
    ========================================== */
@@ -108,6 +112,148 @@ main > section[aria-labelledby="services-heading"] > nav[aria-label="Computer se
 .service-button:focus-visible {
     outline: 3px solid #ffbf00;
     outline-offset: 2px;
+}
+
+/* ==========================================
+   LED DOWNLOAD TELEVISION
+   ========================================== */
+.download-tv-shell {
+    position: relative;
+    isolation: isolate;
+    margin: 32px 0 58px;
+    padding: clamp(12px, 2vw, 24px);
+    border: 2px solid #ff2020;
+    border-radius: 30px;
+    background: #ff2020;
+    box-shadow:
+        inset 0 2px 4px rgba(255, 255, 255, 0.68),
+        inset 0 -8px 22px rgba(135, 0, 0, 0.5),
+        inset 0 0 32px rgba(255, 255, 255, 0.18),
+        0 20px 38px rgba(0, 0, 0, 0.45),
+        0 0 18px rgba(255, 32, 32, 1),
+        0 0 42px rgba(255, 32, 32, 0.9),
+        0 0 78px rgba(255, 32, 32, 0.64);
+}
+
+.download-tv-screen {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: 200px;
+    padding: clamp(20px, 3vw, 36px);
+    border: 1px solid rgba(143, 250, 255, 0.64);
+    border-radius: 18px;
+    background:
+        radial-gradient(ellipse at 50% 100%, rgba(34, 44, 112, 0.45), transparent 68%),
+        linear-gradient(115deg, #050816, #10102b 52%, #071a2b);
+    box-shadow:
+        inset 0 0 35px rgba(0, 240, 255, 0.16),
+        inset 0 0 4px rgba(255, 255, 255, 0.7),
+        0 0 22px rgba(0, 240, 255, 0.2),
+        0 0 48px rgba(255, 0, 127, 0.12);
+}
+
+.download-tv-screen::before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    top: -45%;
+    bottom: -45%;
+    left: -55%;
+    width: 55%;
+    pointer-events: none;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 240, 255, 0.06) 18%,
+        rgba(0, 240, 255, 0.72) 43%,
+        rgba(255, 0, 127, 0.72) 57%,
+        rgba(255, 191, 0, 0.3) 74%,
+        transparent
+    );
+    filter: blur(32px);
+    transform: skewX(-18deg);
+    animation: downloadLedSweep 6s cubic-bezier(0.62, 0, 0.38, 1) infinite;
+}
+
+.download-tv-screen::after {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.24;
+    background-image:
+        radial-gradient(circle, rgba(124, 247, 255, 0.8) 1px, transparent 1.7px),
+        linear-gradient(180deg, transparent 48%, rgba(0, 240, 255, 0.12) 50%, transparent 52%);
+    background-size: 18px 18px, 100% 9px;
+    animation: downloadLedFlicker 2.8s steps(2, end) infinite;
+}
+
+.download-tv-screen > * {
+    position: relative;
+    z-index: 2;
+}
+
+.download-tv-screen .download-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+}
+
+.download-tv-screen .section-kicker {
+    color: #ffbf00;
+}
+
+.download-tv-screen .download-header h3 {
+    color: #030303;
+}
+
+.download-tv-screen #downloads-status {
+    color: #070707;
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.42);
+}
+
+.download-tv-screen .beig-color {
+    border-radius: 12px;
+    background: rgba(5, 12, 30, 0.46);
+    color: #edfaff;
+}
+
+.download-tv-screen .download-category-heading {
+    color: #8dfaff;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.72);
+}
+
+.download-tv-screen .download-page-card {
+    border: 1px solid rgba(124, 247, 255, 0.24);
+    background: rgba(5, 12, 30, 0.76);
+    color: #edfaff;
+    box-shadow: inset 0 0 18px rgba(0, 240, 255, 0.07);
+    backdrop-filter: blur(8px);
+}
+
+.download-page-card h2 {
+    color: #fff;
+}
+
+@keyframes downloadLedSweep {
+    0%, 8% { left: -55%; opacity: 0; }
+    18% { opacity: 1; }
+    82% { opacity: 1; }
+    100% { left: 110%; opacity: 0; }
+}
+
+@keyframes downloadLedFlicker {
+    0%, 100% { opacity: 0.22; }
+    50% { opacity: 0.4; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .download-tv-screen::before,
+    .download-tv-screen::after {
+        animation: none;
+    }
 }
 
 @keyframes chromeEdge {

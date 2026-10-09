@@ -8,6 +8,14 @@
     if (!status || !container) return;
 
     const isHomePage = Boolean(grid);
+    const downloadType = container.getAttribute("data-download-type") || "software";
+    const operatingSystemsFolder = "Operating Systems";
+    const legacyOperatingSystemFolders = ["boot", "efi", "sources", "support"];
+
+    function isLegacyOperatingSystemFolder(entry) {
+        return entry.type === "dir"
+            && legacyOperatingSystemFolders.includes(entry.name.toLowerCase());
+    }
 
     function formatSize(bytes) {
         if (bytes < 1024) return bytes + " B";
@@ -119,9 +127,11 @@
         });
 
         if (categories.size === 0) {
-            status.textContent = isHomePage
-                ? "No downloads are available yet."
-                : "No downloads are currently available.";
+            status.textContent = downloadType === "operating-systems"
+                ? "No operating system downloads are currently available."
+                : isHomePage
+                    ? "No downloads are available yet."
+                    : "No software downloads are currently available.";
             return;
         }
 
@@ -145,6 +155,27 @@
 
     fetchDirectory("downloads")
         .then(function (entries) {
+            if (downloadType === "operating-systems") {
+                const operatingSystemsEntry = entries.find(function (entry) {
+                    return entry.type === "dir"
+                        && entry.name.toLowerCase() === operatingSystemsFolder.toLowerCase();
+                });
+                const mediaFolders = entries.filter(isLegacyOperatingSystemFolder);
+                const folderPromises = mediaFolders.map(function (entry) {
+                    return collectFiles(entry.path, entry.name);
+                });
+
+                if (operatingSystemsEntry) {
+                    folderPromises.push(collectFiles(operatingSystemsEntry.path, operatingSystemsFolder));
+                }
+
+                return Promise.all(folderPromises).then(function (groups) {
+                    return groups.reduce(function (allFiles, group) {
+                        return allFiles.concat(group);
+                    }, []);
+                });
+            }
+
             return Promise.all(entries.map(function (entry) {
                 if (entry.type === "file") {
                     if (entry.name.startsWith(".") || entry.name.toLowerCase() === "readme.md") {
@@ -158,17 +189,23 @@
                     }];
                 }
 
-                if (entry.type === "dir" && !entry.name.startsWith(".")) {
+                if (entry.type === "dir"
+                    && !entry.name.startsWith(".")
+                    && entry.name.toLowerCase() !== operatingSystemsFolder.toLowerCase()
+                    && !isLegacyOperatingSystemFolder(entry)) {
                     return collectFiles(entry.path, entry.name);
                 }
 
                 return [];
             }));
         })
-        .then(function (groups) {
-            renderFiles(groups.reduce(function (allFiles, group) {
-                return allFiles.concat(group);
-            }, []));
+        .then(function (filesOrGroups) {
+            const files = downloadType === "operating-systems"
+                ? filesOrGroups
+                : filesOrGroups.reduce(function (allFiles, group) {
+                    return allFiles.concat(group);
+                }, []);
+            renderFiles(files);
         })
         .catch(function (error) {
             console.error("Could not load the downloads folder:", error);

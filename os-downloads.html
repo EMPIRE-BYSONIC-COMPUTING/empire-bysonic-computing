@@ -3,10 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Download application software and guides provided by Empire Bysonic Computing.">
-    <title>Software Downloads | Empire Bysonic Computing</title>
+    <meta name="description" content="Download operating system installation files provided by Empire Bysonic Computing.">
+    <title>Operating System Downloads | Empire Bysonic Computing</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        body.os-download-page {
+            min-height: 100vh;
+            background-color: rgb(43, 73, 72);
+            color: #fff;
+        }
+        .os-download-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-left: 24px;
+        }
+        @media (max-width: 520px) {
+            .os-download-navigation {
+                flex-wrap: wrap;
+                margin-left: 0;
+            }
+        }
         .download-button {
             display: inline-flex;
             align-items: center;
@@ -45,24 +62,24 @@
         }
     </style>
 </head>
-<body>
+<body class="os-download-page">
     <header class="amber-color">
-        <h1>Software Downloads</h1>
+        <h1>Operating System Downloads</h1>
     </header>
     <main class="service-page">
-        <section class="download-tv-shell" aria-label="Available software downloads">
+        <section class="download-tv-shell" aria-label="Available operating system downloads">
             <div class="download-tv-screen">
                 <div class="beig-color">
-                    <h2>Software &amp; Guides</h2>
-                    <p>Application software and related downloads.</p>
+                    <h2>Operating Systems</h2>
+                    <p>Installation files provided for visitors to download.</p>
                 </div>
-                <p id="downloads-status" role="status" aria-live="polite">Loading available downloads…</p>
-                <div class="download-grid" id="downloads-list" data-download-type="software"></div>
+                <p id="downloads-status" role="status" aria-live="polite">Loading operating system downloads…</p>
+                <div class="download-grid" id="downloads-list" data-download-type="operating-systems"></div>
             </div>
         </section>
-        <p>
+        <p class="os-download-navigation">
             <a class="service-button" href="index.html">Back to homepage</a>
-            <a class="service-button" href="os-downloads.html">OS Downloads</a>
+            <a class="service-button" href="downloads.html">Software &amp; Guides</a>
         </p>
     </main>
     <script src="downloads.js" defer></script>
