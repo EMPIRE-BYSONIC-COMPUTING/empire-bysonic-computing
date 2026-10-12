@@ -127,6 +127,10 @@
         });
 
         if (categories.size === 0) {
+            if (container.hasAttribute("data-curated-downloads")) {
+                status.textContent = "";
+                return;
+            }
             status.textContent = downloadType === "operating-systems"
                 ? "No operating system downloads are currently available."
                 : isHomePage
@@ -209,6 +213,8 @@
         })
         .catch(function (error) {
             console.error("Could not load the downloads folder:", error);
-            status.textContent = "Downloads could not be loaded right now. Please try again later.";
+            status.textContent = container.hasAttribute("data-curated-downloads")
+                ? "Additional repository-hosted files could not be loaded. The official downloads above are still available."
+                : "Downloads could not be loaded right now. Please try again later.";
         });
 })();

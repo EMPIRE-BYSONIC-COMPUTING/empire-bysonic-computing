@@ -33,20 +33,22 @@ A static website for Empire Bysonic Computing, a computer repair, maintenance, u
 - `robots.txt` - Search-engine crawling instructions
 - `images/` - Local website images
 
-## Categorized Downloads
+## Downloads
 
-Add application software and related files to folders under `downloads/`, such
-as `downloads/Applications/` or `downloads/Drivers/`. Both the homepage and
-`downloads.html` group files by their first-level folder; files may also be
-organized in nested folders within a category. Files placed directly in
-`downloads/` appear under "Other Downloads".
+`downloads.html` includes official manufacturer driver-support links for
+common laptop brands, component driver tools, and links to commonly used
+software. For hardware drivers, visitors should select their exact laptop model
+and Windows version from the manufacturer's support site. The page links to
+official sources rather than mirroring executable installers.
 
-Place operating system installation files under
-`downloads/Operating Systems/`. The homepage's "OS Downloads" button and
-`os-downloads.html` list files from that folder and exclude them from the
-application software list. Existing Windows installation media in root-level
-`boot/`, `efi/`, `sources/`, and `support/` folders is also treated as operating
-system content for compatibility.
+Additional application files can be added to folders under `downloads/`, such
+as `downloads/Applications/` or `downloads/Drivers/`. The homepage and
+`downloads.html` group repository-hosted files by their first-level folder;
+nested files are shown in that category. Files placed directly in `downloads/`
+appear under "Other Downloads".
+
+Windows downloads on `os-downloads.html` link to official Microsoft sources.
+Do not add copyrighted Windows installation media to the repository.
 
 ## GitHub Pages
 

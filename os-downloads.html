@@ -11,6 +11,29 @@
             min-height: 100vh;
             background-color: rgb(43, 73, 72);
             color: #22c7d3f8;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .os-download-page .amber-color {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            padding: 10px;
+            background-color: #ffbf00;
+            color: #000;
+            text-align: center;
+        }
+        .os-download-page .amber-color h1 {
+            margin: 0;
+        }
+        .download-page-logo {
+            display: block;
+            width: clamp(64px, 10vw, 96px);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            object-fit: contain;
         }
         .os-download-navigation {
             display: flex;
@@ -49,6 +72,10 @@
             background: rgba(5, 12, 30, 0.7);
             color: #e44718;
         }
+        .os-download-page .download-tv-screen .beig-color h2,
+        .os-download-page .download-tv-screen .beig-color p {
+            color: #7defff !important;
+        }
         .os-download-page .copyright-text {
             color: #fff !important;
         }
@@ -61,7 +88,8 @@
     </style>
 </head>
 <body class="os-download-page">
-    <header class="amber-color">
+    <header class="amber-color download-page-header">
+        <img class="download-page-logo" src="images/EMPIRE BYSONIC COMPUTING-logo.png" alt="Empire Bysonic Computing logo">
         <h1>Windows Downloads</h1>
     </header>
     <main class="service-page">
