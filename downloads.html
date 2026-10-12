@@ -28,52 +28,52 @@
         .software-download-page .amber-color h1 {
             margin: 0;
         }
-        .download-page-logo {
-            display: block;
-            width: clamp(64px, 10vw, 96px);
-            aspect-ratio: 1;
-            border-radius: 50%;
-            object-fit: contain;
-        }
-        .download-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 48px;
-            padding: 12px 24px;
-            border-radius: 10px;
-            background: #ffd700;
-            color: #111;
-            text-decoration: none;
-            font-weight: 800;
-            transition: background 0.2s ease, transform 0.2s ease;
-        }
-        .download-button:hover {
-            background: #ffd700;
-            transform: translateY(-1px);
-        }
-        .download-button:focus-visible {
-            outline: 3px solid #111;
-            outline-offset: 3px;
-        }
         .download-category-heading {
             grid-column: 1 / -1;
             margin: 8px 0 0;
             color: #ffbf00;
         }
-        .download-page-card {
+        .software-download-page .download-tv-screen .download-page-card {
             padding: 20px;
             border-radius: 12px;
             background: beige;
             color: #333;
+            border: 0;
+            box-shadow: none;
+            backdrop-filter: none;
         }
-        .download-page-card h2 {
+        .software-download-page .download-tv-screen .download-page-card h2,
+        .software-download-page .download-tv-screen .download-page-card p {
             margin-top: 0;
             color: #333;
         }
-        .download-page-card p {
+        .software-download-page .download-tv-screen .download-page-card p {
             margin-bottom: 16px;
-            color: #333;
+        }
+        .software-download-page .download-tv-screen .download-page-card .download-button {
+            display: inline;
+            min-height: 0;
+            padding: 0;
+            border-radius: 0;
+            background: none;
+            color: #174ea6;
+            text-decoration: underline;
+            font-weight: 700;
+        }
+        .software-download-page .download-tv-screen .download-page-card .download-button:hover {
+            background: none;
+            color: #123b7a;
+            transform: none;
+        }
+        .software-download-page .download-tv-screen .download-page-card .download-button:focus-visible {
+            outline: 3px solid #111;
+            outline-offset: 3px;
+        }
+        .software-download-note {
+            padding: 16px;
+            border-left: 4px solid #ffbf00;
+            background: rgba(5, 12, 30, 0.7);
+            color: #e44718;
         }
         .software-download-page .download-tv-screen .beig-color h2,
         .software-download-page .download-tv-screen .beig-color p {
@@ -86,7 +86,6 @@
 </head>
 <body class="software-download-page">
     <header class="amber-color download-page-header">
-        <img class="download-page-logo" src="images/EMPIRE BYSONIC COMPUTING-logo.png" alt="Empire Bysonic Computing logo">
         <h1>Software Downloads</h1>
     </header>
     <main class="service-page">
@@ -96,7 +95,7 @@
                     <h2>Software &amp; Guides</h2>
                     <p>Official driver support and commonly used laptop software.</p>
                 </div>
-                <p class="download-page-card">
+                <p class="software-download-note">
                     For sound, Wi-Fi, Ethernet, Bluetooth, graphics, and touchpad drivers, start with the laptop
                     manufacturer's support page and select the exact model and Windows version. This page links
                     to official vendor sources; it does not mirror installers. Avoid third-party driver bundles
