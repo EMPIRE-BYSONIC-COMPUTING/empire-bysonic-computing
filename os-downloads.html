@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Download operating system installation files provided by Empire Bysonic Computing.">
-    <title>Operating System Downloads | Empire Bysonic Computing</title>
+    <meta name="description" content="Find official Microsoft download and availability information for Windows releases.">
+    <title>Windows Downloads | Empire Bysonic Computing</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body.os-download-page {
             min-height: 100vh;
             background-color: rgb(43, 73, 72);
-            color: #fff;
+            color: #22c7d3f8;
         }
         .os-download-navigation {
             display: flex;
@@ -18,63 +18,213 @@
             gap: 12px;
             margin-left: 24px;
         }
+        .os-download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 18px;
+        }
+        .os-download-card {
+            padding: 20px;
+            border-radius: 12px;
+            background: beige;
+            color: #333;
+        }
+        .os-download-card h3 {
+            margin-top: 0;
+        }
+        .os-download-card p {
+            margin-bottom: 16px;
+        }
+        .os-download-card a {
+            color: #174ea6;
+            font-weight: 700;
+        }
+        .os-download-card a:focus-visible {
+            outline: 3px solid #111;
+            outline-offset: 3px;
+        }
+        .os-download-note {
+            padding: 16px;
+            border-left: 4px solid #ffbf00;
+            background: rgba(5, 12, 30, 0.7);
+            color: #e44718;
+        }
+        .os-download-page .copyright-text {
+            color: #fff !important;
+        }
         @media (max-width: 520px) {
             .os-download-navigation {
                 flex-wrap: wrap;
                 margin-left: 0;
             }
         }
-        .download-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 48px;
-            padding: 12px 24px;
-            border-radius: 10px;
-            background: #ffbf00;
-            color: #111;
-            text-decoration: none;
-            font-weight: 800;
-            transition: background 0.2s ease, transform 0.2s ease;
-        }
-        .download-button:hover {
-            background: #ffd34d;
-            transform: translateY(-1px);
-        }
-        .download-button:focus-visible {
-            outline: 3px solid #111;
-            outline-offset: 3px;
-        }
-        .download-category-heading {
-            grid-column: 1 / -1;
-            margin: 8px 0 0;
-            color: #ffbf00;
-        }
-        .download-page-card {
-            padding: 20px;
-            border-radius: 12px;
-            background: beige;
-            color: #333;
-        }
-        .download-page-card h2,
-        .download-page-card p {
-            margin-top: 0;
-        }
     </style>
 </head>
 <body class="os-download-page">
     <header class="amber-color">
-        <h1>Operating System Downloads</h1>
+        <h1>Windows Downloads</h1>
     </header>
     <main class="service-page">
-        <section class="download-tv-shell" aria-label="Available operating system downloads">
+        <section class="download-tv-shell" aria-label="Official Windows download and release information">
             <div class="download-tv-screen">
                 <div class="beig-color">
-                    <h2>Operating Systems</h2>
-                    <p>Installation files provided for visitors to download.</p>
+                    <h2>Official Microsoft sources</h2>
+                    <p>Use Microsoft's own pages for installation media and product information.</p>
                 </div>
-                <p id="downloads-status" role="status" aria-live="polite">Loading operating system downloads…</p>
-                <div class="download-grid" id="downloads-list" data-download-type="operating-systems"></div>
+
+                <p class="os-download-note">
+                    Windows is copyrighted software. This page links to Microsoft only; it does not host
+                    Windows installation files. Microsoft may change which versions are available, and
+                    older releases may require a valid license or media supplied with the device.
+                    Avoid unofficial mirrors.
+                </p>
+
+                <h2 class="download-category-heading">Official installation downloads</h2>
+                <div class="os-download-grid">
+                    <article class="os-download-card">
+                        <h3>Windows 11</h3>
+                        <p>Microsoft's official download and installation options.</p>
+                        <a href="https://www.microsoft.com/software-download/windows11"
+                           target="_blank" rel="noopener noreferrer">Visit Microsoft to download Windows 11</a>
+                    </article>
+                    <article class="os-download-card">
+                        <h3>Windows 10</h3>
+                        <p>Microsoft's official download and installation options. Check the page for current support details.</p>
+                        <a href="https://www.microsoft.com/software-download/windows10"
+                           target="_blank" rel="noopener noreferrer">Visit Microsoft to download Windows 10</a>
+                    </article>
+                </div>
+
+                <h2 class="download-category-heading">Historical Windows desktop releases</h2>
+                <p>Microsoft's lifecycle catalogue is the official source for support and availability information.
+                    It does not guarantee that installation media is still offered.</p>
+                <div class="os-download-grid">
+                    <article class="os-download-card">
+                        <h3>Windows 1.x and 2.x</h3>
+                        <p>Early Windows releases.</p>
+                        <a href="https://learn.microsoft.com/en-us/lifecycle/"
+                           target="_blank" rel="noopener noreferrer">Check Microsoft's lifecycle information</a>
+                    </article>
+                    <article class="os-download-card">
+                        <h3>Windows 3.0, 3.1 and 3.11</h3>
+                        <p>Including Windows for Workgroups 3.11.</p>
+                        <a href="https://learn.microsoft.com/en-us/lifecycle/"
+                           target="_blank" rel="noopener noreferrer">Check Microsoft's lifecycle information</a>
+                    </article>
+                    <article class="os-download-card">
+                        <h3>Windows NT 3.x and 4.0</h3>
+                        <p>Windows NT Workstation releases.</p>
+                        <a href="https://learn.microsoft.com/en-us/lifecycle/"
+                           target="_blank" rel="noopener noreferrer">Check Microsoft's lifecycle information</a>
+                    </article>
+                    <article class="os-download-card">
+                        <h3>Windows 95</h3>
+                        <p>Consumer desktop release introduced in 1995.</p>
+                        <a href="https://learn.microsoft.com/en-us/lifecycle/"
+                           target="_blank" rel="noopener noreferrer">Check Microsoft's lifecycle information</a>
+                    </article>
+                    <article class="os-download-card">
+                        <h3>Windows 98 and 98 Second Edition</h3>
+                        <p>Consumer desktop releases from the Windows 9x family.</p>
+                        <a href="https://learn.microsoft.com/en-us/lifecycle/"
+                           target="_blank" rel="noopener noreferrer">Check Microsoft's lifecycle information</a>
+                    </article>
+                    <article class="os-download-card">
+                        <h3>Windows 2000</h3>
+                        <p>Windows 2000 Professional and related editions.</p>
+                        <a href="https://learn.microsoft.com/en-us/lifecycle/"
+                           target="_blank" rel="noopener noreferrer">Check Microsoft's lifecycle information</a>
+                    </article>
+                    <article class="os-download-card">
+                        <h3>Windows Me</h3>
+                        <p>Windows Millennium Edition.</p>
+                        <a href="https://learn.microsoft.com/en-us/lifecycle/"
+                           target="_blank" rel="noopener noreferrer">Check Microsoft's lifecycle information</a>
+                    </article>
+                    <article class="os-download-card">
+                        <h3>Windows XP</h3>
+                        <p>Consumer and Professional editions.</p>
+                        <a href="https://learn.microsoft.com/en-us/lifecycle/"
+                           target="_blank" rel="noopener noreferrer">Check Microsoft's lifecycle information</a>
+                    </article>
+                    <article class="os-download-card">
+                        <h3>Windows Vista</h3>
+                        <p>Windows Vista client editions.</p>
+                        <a href="https://learn.microsoft.com/en-us/lifecycle/"
+                           target="_blank" rel="noopener noreferrer">Check Microsoft's lifecycle information</a>
+                    </article>
+                    <article class="os-download-card">
+                        <h3>Windows 7</h3>
+                        <p>Windows 7 client editions.</p>
+                        <a href="https://learn.microsoft.com/en-us/lifecycle/"
+                           target="_blank" rel="noopener noreferrer">Check Microsoft's lifecycle information</a>
+                    </article>
+                    <article class="os-download-card">
+                        <h3>Windows 8 and 8.1</h3>
+                        <p>Windows 8 client releases, including 8.1.</p>
+                        <a href="https://learn.microsoft.com/en-us/lifecycle/"
+                           target="_blank" rel="noopener noreferrer">Check Microsoft's lifecycle information</a>
+                    </article>
+                </div>
+
+                <h2 class="download-category-heading">Windows Server releases</h2>
+                <p>Server installation media availability and licensing depend on the product and entitlement.</p>
+                <div class="os-download-grid">
+                    <article class="os-download-card">
+                        <h3>Windows NT Server 3.x and 4.0</h3>
+                        <p>Early Windows NT Server releases.</p>
+                        <a href="https://learn.microsoft.com/en-us/lifecycle/"
+                           target="_blank" rel="noopener noreferrer">Check Microsoft's lifecycle information</a>
+                    </article>
+                    <article class="os-download-card">
+                        <h3>Windows 2000 Server</h3>
+                        <p>Windows 2000 Server family.</p>
+                        <a href="https://learn.microsoft.com/en-us/lifecycle/"
+                           target="_blank" rel="noopener noreferrer">Check Microsoft's lifecycle information</a>
+                    </article>
+                    <article class="os-download-card">
+                        <h3>Windows Server 2003 and 2003 R2</h3>
+                        <p>Windows Server 2003 family.</p>
+                        <a href="https://learn.microsoft.com/en-us/lifecycle/"
+                           target="_blank" rel="noopener noreferrer">Check Microsoft's lifecycle information</a>
+                    </article>
+                    <article class="os-download-card">
+                        <h3>Windows Server 2008 and 2008 R2</h3>
+                        <p>Windows Server 2008 family.</p>
+                        <a href="https://learn.microsoft.com/en-us/lifecycle/"
+                           target="_blank" rel="noopener noreferrer">Check Microsoft's lifecycle information</a>
+                    </article>
+                    <article class="os-download-card">
+                        <h3>Windows Server 2012 and 2012 R2</h3>
+                        <p>Windows Server 2012 family.</p>
+                        <a href="https://learn.microsoft.com/en-us/lifecycle/"
+                           target="_blank" rel="noopener noreferrer">Check Microsoft's lifecycle information</a>
+                    </article>
+                    <article class="os-download-card">
+                        <h3>Windows Server 2016</h3>
+                        <p>Windows Server 2016 editions.</p>
+                        <a href="https://learn.microsoft.com/en-us/lifecycle/"
+                           target="_blank" rel="noopener noreferrer">Check Microsoft's lifecycle information</a>
+                    </article>
+                    <article class="os-download-card">
+                        <h3>Windows Server 2019</h3>
+                        <p>Windows Server 2019 editions.</p>
+                        <a href="https://learn.microsoft.com/en-us/lifecycle/"
+                           target="_blank" rel="noopener noreferrer">Check Microsoft's lifecycle information</a>
+                    </article>
+                    <article class="os-download-card">
+                        <h3>Windows Server 2022</h3>
+                        <p>Windows Server 2022 editions.</p>
+                        <a href="https://learn.microsoft.com/en-us/lifecycle/"
+                           target="_blank" rel="noopener noreferrer">Check Microsoft's lifecycle information</a>
+                    </article>
+                    <article class="os-download-card">
+                        <h3>Windows Server 2025</h3>
+                        <p>Microsoft's current Windows Server release family.</p>
+                        <a href="https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2025"
+                           target="_blank" rel="noopener noreferrer">Visit Microsoft's Windows Server 2025 Evaluation Center</a>
+                    </article>
+                </div>
             </div>
         </section>
         <p class="os-download-navigation">
@@ -82,6 +232,10 @@
             <a class="service-button" href="downloads.html">Software &amp; Guides</a>
         </p>
     </main>
-    <script src="downloads.js" defer></script>
+    <footer>
+        <p class="copyright-text">
+            <i>&copy; 2026 EMPIRE BYSONIC COMPUTING</i>
+        </p>
+    </footer>
 </body>
 </html>

@@ -1,4 +1,7 @@
 {
     "workbench.browser.enableRemoteProxy": true,
-    "workbench.browser.experimentalUserTools.enabled": true
+    "workbench.browser.experimentalUserTools.enabled": true,
+    "geminicodeassist.agentDebugMode": true,
+    "geminicodeassist.agentYoloMode": true,
+    "geminicodeassist.chat.changeView": "Default diff view"
 }
