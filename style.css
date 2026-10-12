@@ -23,6 +23,15 @@
 .service-page li {
     margin-bottom: 8px;
 }
+
+.download-page-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 28px auto;
+}
+
 .white-color {
     color: #ffffff;
 }
