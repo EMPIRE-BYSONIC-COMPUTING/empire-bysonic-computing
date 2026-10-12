@@ -792,10 +792,11 @@
             white-space: nowrap;
         }
 
-        .bysonic-header-logo {
-            width: 56px;
-            height: 56px;
-            flex: 0 0 auto;
+        .homepage-heading-logo {
+            display: block;
+            width: clamp(96px, 18vw, 160px);
+            height: auto;
+            margin: 0 auto 12px;
             border-radius: 50%;
             object-fit: contain;
         }
@@ -887,7 +888,6 @@
         }
     </style>
 
-    <img class="bysonic-header-logo" src="./images/EMPIRE BYSONIC COMPUTING-logo.png" alt="Empire Bysonic Computing logo">
     <div class="bysonic-brand-title">EMPIRE BYSONIC COMPUTING</div>
     
     <div class="bysonic-search-form-wrapper">
@@ -1012,6 +1012,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <h1 style="margin: 0; text-decoration: underline;">OPERATIONS</h1>
         </div>
         <div class="beig-color led-heading-panel">
+            <img class="homepage-heading-logo" src="./images/EMPIRE BYSONIC COMPUTING-logo.png" alt="Empire Bysonic Computing logo">
             <h2>Laptop & Desktop Computers' repairs and sales</h2>
             <p><i>**where devices get fixed**</i></p>
             <p><strong>Contact: +2781 827 2643</strong></p>
