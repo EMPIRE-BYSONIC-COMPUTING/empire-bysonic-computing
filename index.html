@@ -320,6 +320,146 @@
         .video-scene p { margin: 0; color: #f1e8e6; }
         .explainer-progress { height: 3px; margin-top: 8px; background: rgba(255,255,255,0.2); }
         .explainer-progress::before { content: ''; display: block; height: 100%; width: 100%; background: #ffbf00; transform-origin: left; animation: clipProgress 12s linear infinite; }
+        .download-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .section-kicker {
+            margin: 0 0 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #ffbf00;
+        }
+        .download-header h3 {
+            margin: 0;
+            color: #fff;
+            font-size: clamp(1.5rem, 2vw, 2rem);
+        }
+        .download-tv-screen .download-header h3 {
+            color: #8dfaff;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.72);
+        }
+        .download-tv-screen #downloads-status {
+            color: #e8fbff;
+            text-shadow: 0 0 8px rgba(0, 240, 255, 0.42);
+        }
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: rgba(255, 191, 0, 0.12);
+            border: 1px solid rgba(255, 191, 0, 0.32);
+            color: #ffdf7a;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        .download-section-link {
+            text-decoration: none;
+            transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .download-section-link:hover {
+            background: rgba(0, 240, 255, 0.2);
+            border-color: rgba(0, 240, 255, 0.72);
+            box-shadow: 0 0 16px rgba(0, 240, 255, 0.36);
+        }
+        .download-section-link:focus-visible {
+            outline: 3px solid #8dfaff;
+            outline-offset: 4px;
+        }
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 18px;
+        }
+        .download-card {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 20px;
+            border-radius: 12px;
+            background: rgba(17, 17, 17, 0.45);
+            border: 1px solid rgba(255,255,255,0.12);
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+        .download-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(0, 240, 255, 0.5);
+            box-shadow: 0 10px 25px rgba(0, 240, 255, 0.12);
+        }
+        .download-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, #ffbf00, #ff8c42);
+            color: #111;
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+        .download-card h4 {
+            margin: 0;
+            color: #fff;
+            font-size: 1.15rem;
+        }
+        .download-card p {
+            margin: 0;
+            line-height: 1.6;
+            color: #dfe7ff;
+            flex: 1;
+        }
+        .download-meta {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #9ab3ff;
+        }
+        .download-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            align-self: center;
+            width: min(100%, 240px);
+            min-height: 46px;
+            padding: 12px 16px;
+            border: 1px solid rgba(255, 191, 0, 0.65);
+            border-radius: 10px;
+            background: #ffbf00;
+            color: #111;
+            text-decoration: none;
+            font-weight: 800;
+            text-align: center;
+            box-shadow: 0 0 8px rgba(255, 191, 0, 0.24);
+            transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .download-button:hover {
+            background: #ffd34d;
+            border-color: #8dfaff;
+            color: #111;
+            transform: translateY(-1px);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.75), 0 0 22px rgba(255, 0, 127, 0.45);
+        }
+        .download-button:focus-visible {
+            outline: 3px solid #8dfaff;
+            outline-offset: 3px;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.75), 0 0 22px rgba(255, 0, 127, 0.45);
+        }
+        .download-category-heading {
+            grid-column: 1 / -1;
+            margin: 8px 0 0;
+            color: #ffbf00;
+        }
         @keyframes pageFadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes sectionRise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes productReveal { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
@@ -905,6 +1045,21 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="explainer-progress" aria-hidden="true"></div>
         </section>
 
+        <section class="download-section download-tv-shell" aria-labelledby="downloads-heading">
+            <div class="download-tv-screen">
+                <div class="download-header">
+                    <div>
+                        <p class="section-kicker">Resources</p>
+                        <h3 id="downloads-heading">Downloads</h3>
+                    </div>
+                    <a class="section-badge download-section-link" href="os-downloads.html">OS Downloads</a>
+                </div>
+
+                <p id="downloads-status" role="status" aria-live="polite">Loading available downloads…</p>
+                <div class="download-grid" id="downloads-grid" data-download-type="software"></div>
+            </div>
+        </section>
+
         <section class="bysonic-journal" id="bysonic-journal" aria-labelledby="journal-heading">
             <div class="journal-header">
                 <span class="journal-eyebrow">The Bysonic Journal</span>
@@ -1216,6 +1371,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <button class="chat-toggle" data-chat-toggle type="button" aria-expanded="false" aria-label="Open customer support chat">&#128172;</button>
     </aside>
     <script src="chat-widget.js" defer></script>
+    <script src="downloads.js" defer></script>
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
         var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
