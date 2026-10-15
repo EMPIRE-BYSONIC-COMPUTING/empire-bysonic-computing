@@ -19,6 +19,15 @@
 .service-page li {
     margin-bottom: 8px;
 }
+
+.download-page-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 28px auto;
+}
+
 .white-color {
     color: #ffffff;
 }
@@ -75,6 +84,7 @@
     box-shadow: 0 10px 18px rgba(42, 48, 60, 0.22), inset 0 1px 0 #ffffff, inset 0 -2px 4px rgba(97, 105, 118, 0.2);
     background-size: 100% 100%, 240% 240%;
     animation: chromeEdge 5s linear infinite;
+    transition: filter 0.25s ease;
 }
 
 .service-button::before {
@@ -94,9 +104,29 @@
     box-shadow: 0 14px 24px rgba(42, 48, 60, 0.28), inset 0 1px 0 #ffffff, inset 0 -2px 4px rgba(97, 105, 118, 0.2);
 }
 
+.download-page-navigation .service-button:hover {
+    background: linear-gradient(#ff5a5a, #d90000) padding-box, conic-gradient(from 180deg, #ffb3b3, #ff1a1a, #8f0000, #ff6666, #ffb3b3) border-box;
+    filter: drop-shadow(0 0 5px rgba(255, 35, 35, 0.75)) drop-shadow(0 0 10px rgba(255, 0, 0, 0.4)) drop-shadow(0 0 7px rgba(0, 240, 255, 0.7)) drop-shadow(0 0 13px rgba(255, 191, 0, 0.45));
+}
+
+.download-page-navigation .service-button:hover::before {
+    background: linear-gradient(110deg, #ff5a5a 0%, #ff5a5a 37%, rgba(255, 255, 255, 0.8) 48%, rgba(255, 255, 255, 0.25) 53%, #d90000 67%, #ff5a5a 100%);
+}
+
 .service-button:focus-visible {
     outline: 3px solid #ffbf00;
     outline-offset: 2px;
+}
+
+.download-section-link:hover {
+    filter: drop-shadow(0 0 7px rgba(0, 240, 255, 0.75)) drop-shadow(0 0 12px rgba(255, 0, 127, 0.55));
+    transform: translateY(-2px);
+}
+
+.download-section-link:focus-visible {
+    outline: 3px solid #8dfaff;
+    outline-offset: 4px;
+    filter: drop-shadow(0 0 7px rgba(0, 240, 255, 0.75));
 }
 
 /* ==========================================

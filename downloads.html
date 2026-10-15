@@ -51,23 +51,34 @@
             margin-bottom: 16px;
         }
         .software-download-page .download-tv-screen .download-page-card .download-button {
-            display: inline;
-            min-height: 0;
-            padding: 0;
-            border-radius: 0;
-            background: none;
-            color: #174ea6;
-            text-decoration: underline;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 100%;
+            min-height: 44px;
+            margin: 0 auto;
+            padding: 10px 16px;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            background: linear-gradient(#ffbf00, #ff9f00) padding-box, linear-gradient(135deg, #fff0a8, #d47700) border-box;
+            color: #111;
             font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(180, 103, 0, 0.25);
+            transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
         }
         .software-download-page .download-tv-screen .download-page-card .download-button:hover {
-            background: none;
-            color: #123b7a;
-            transform: none;
+            background: linear-gradient(#ff5a5a, #d90000) padding-box, conic-gradient(from 180deg, #ffb3b3, #ff1a1a, #8f0000, #ff6666, #ffb3b3) border-box;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 0 8px rgba(255, 35, 35, 0.8), 0 0 16px rgba(0, 240, 255, 0.65), 0 0 26px rgba(255, 0, 127, 0.45);
+            filter: saturate(1.2);
         }
         .software-download-page .download-tv-screen .download-page-card .download-button:focus-visible {
-            outline: 3px solid #111;
+            outline: 3px solid #00cfe8;
             outline-offset: 3px;
+            box-shadow: 0 0 8px rgba(0, 240, 255, 0.8), 0 0 18px rgba(255, 0, 127, 0.45);
         }
         .software-download-note {
             padding: 16px;

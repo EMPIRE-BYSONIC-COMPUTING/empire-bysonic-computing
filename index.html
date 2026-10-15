@@ -100,10 +100,14 @@
             animation: sectionRise 0.7s 0.3s ease-out both;
         }
         .button-group {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
             gap: 10px;
             margin-bottom: 20px;
+        }
+        .button-group .led-button {
+            flex: 0 1 240px;
         }
                 .copyright-text {
             font-style: italic;
