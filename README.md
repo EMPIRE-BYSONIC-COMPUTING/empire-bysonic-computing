@@ -29,27 +29,9 @@ A static website for Empire Bysonic Computing, a computer repair, maintenance, u
 - `Physical Diagnostics.html` - Diagnostic services page
 - `Repairs & Maintenance.html` - Repairs and maintenance page
 - `Modular Component Swops.html` - Component replacement page
-- `downloads.html`, `os-downloads.html`, and `downloads.js` - Categorized application and operating system downloads
 - `sitemap.xml` - Search-engine sitemap
 - `robots.txt` - Search-engine crawling instructions
 - `images/` - Local website images
-
-## Downloads
-
-`downloads.html` includes official manufacturer driver-support links for
-common laptop brands, component driver tools, and links to commonly used
-software. For hardware drivers, visitors should select their exact laptop model
-and Windows version from the manufacturer's support site. The page links to
-official sources rather than mirroring executable installers.
-
-Additional application files can be added to folders under `downloads/`, such
-as `downloads/Applications/` or `downloads/Drivers/`. The homepage and
-`downloads.html` group repository-hosted files by their first-level folder;
-nested files are shown in that category. Files placed directly in `downloads/`
-appear under "Other Downloads".
-
-Windows downloads on `os-downloads.html` link to official Microsoft sources.
-Do not add copyrighted Windows installation media to the repository.
 
 ## GitHub Pages
 
