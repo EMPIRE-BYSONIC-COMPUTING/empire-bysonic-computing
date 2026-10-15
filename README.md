@@ -12,6 +12,7 @@ A static website for Empire Bysonic Computing, a computer repair, maintenance, u
 - Device sales listings with browser-based form storage
 - SnapScan payment-link button
 - Animated service and social-media buttons
+- Tawk.to live chat on the homepage and journal articles
 - Local customer-support chatbot with prewritten responses
 - Responsive layout for desktop and mobile screens
 - SEO metadata and local-business structured data
