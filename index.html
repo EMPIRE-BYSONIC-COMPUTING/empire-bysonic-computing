@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Laptop and Desktop Repairs | Empire Bysonic Computing</title>
-        <meta name="description" content="Empire Bysonic Computing provides laptop and desktop repairs, hardware diagnostics, screen and port replacement, RAM and SSD upgrades, quotations, and computer sales in South Africa.">
+        <meta name="description" content="Laptop and desktop repairs, diagnostics, screen and port replacement, RAM and SSD upgrades, and practical computer-care guides from Empire Bysonic Computing in Cape Town.">
         <meta name="keywords" content="laptop repairs, desktop repairs, computer diagnostics, laptop screen replacement, RAM upgrades, SSD installation, charging port repair, South Africa">
         <link rel="canonical" href="https://empire-bysonic-computing.github.io/empire-bysonic-computing/">
         <meta property="og:title" content="Laptop and Desktop Repairs | Empire Bysonic Computing">
-        <meta property="og:description" content="Hardware diagnostics, computer repairs, component replacement, upgrades, quotations, and device sales.">
+        <meta property="og:description" content="Computer repairs, diagnostics, upgrades, device sales, and practical laptop-care guides in Cape Town.">
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://empire-bysonic-computing.github.io/empire-bysonic-computing/">
         <script type="application/ld+json">
@@ -85,6 +85,14 @@
             position: relative;
             z-index: 1;
         }
+        .homepage-heading-logo {
+            display: block;
+            width: clamp(96px, 18vw, 160px);
+            height: auto;
+            margin: 0 auto 12px;
+            border-radius: 50%;
+            object-fit: contain;
+        }
         .red-color {
             background-color: rgb(219, 77, 77);
             padding: 20px;
@@ -92,11 +100,10 @@
             animation: sectionRise 0.7s 0.3s ease-out both;
         }
         .button-group {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
             gap: 10px;
             margin-bottom: 20px;
-            flex-wrap: wrap; /* Fixed: Prevents squishing on mobile screens */
         }
                 .copyright-text {
             font-style: italic;
@@ -111,8 +118,8 @@
 
             .led-button {
             position: relative;
-            flex: 1;
-            min-width: 200px; /* Fixed: Ensures buttons retain size on small screens */
+            min-width: 0;
+            box-sizing: border-box;
             padding: 3px;
             background: transparent;
             border: none;
@@ -183,140 +190,6 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             margin-top: 20px;
-        }
-        .download-section {
-            margin: 32px 0;
-            padding: 24px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 14px;
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
-        }
-        .download-section.download-tv-shell {
-            padding: clamp(12px, 2vw, 24px);
-            background: #ff2020;
-            border: 2px solid #ff2020;
-            border-radius: 30px;
-            box-shadow: inset 0 2px 4px rgba(255,255,255,0.68), inset 0 -8px 22px rgba(135,0,0,0.5), inset 0 0 32px rgba(255,255,255,0.18), 0 20px 38px rgba(0,0,0,0.45), 0 0 18px rgba(255,32,32,1), 0 0 42px rgba(255,32,32,0.9), 0 0 78px rgba(255,32,32,0.64);
-        }
-        .download-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-        .section-kicker {
-            margin: 0 0 6px;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #ffbf00;
-        }
-        .download-header h3 {
-            margin: 0;
-            color: #fff;
-            font-size: clamp(1.5rem, 2vw, 2rem);
-        }
-        .section-badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 7px 12px;
-            border-radius: 999px;
-            background: rgba(255, 191, 0, 0.12);
-            border: 1px solid rgba(255, 191, 0, 0.32);
-            color: #ffdf7a;
-            font-size: 0.8rem;
-            font-weight: 700;
-        }
-        .download-section-link {
-            text-decoration: none;
-            transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-        }
-        .download-section-link:hover {
-            background: rgba(0, 240, 255, 0.2);
-            border-color: rgba(0, 240, 255, 0.72);
-            box-shadow: 0 0 16px rgba(0, 240, 255, 0.36);
-        }
-        .download-section-link:focus-visible {
-            outline: 3px solid #8dfaff;
-            outline-offset: 4px;
-        }
-        .download-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 18px;
-        }
-        .download-card {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            padding: 20px;
-            border-radius: 12px;
-            background: rgba(17, 17, 17, 0.45);
-            border: 1px solid rgba(255,255,255,0.12);
-            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-        }
-        .download-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(0, 240, 255, 0.5);
-            box-shadow: 0 10px 25px rgba(0, 240, 255, 0.12);
-        }
-        .download-icon {
-            width: 46px;
-            height: 46px;
-            border-radius: 12px;
-            display: grid;
-            place-items: center;
-            background: linear-gradient(135deg, #ffbf00, #ff8c42);
-            color: #111;
-            font-size: 1.3rem;
-            font-weight: 800;
-        }
-        .download-card h4 {
-            margin: 0;
-            color: #fff;
-            font-size: 1.15rem;
-        }
-        .download-card p {
-            margin: 0;
-            line-height: 1.6;
-            color: #dfe7ff;
-            flex: 1;
-        }
-        .download-meta {
-            display: flex;
-            justify-content: space-between;
-            gap: 8px;
-            font-size: 0.72rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: #9ab3ff;
-        }
-        .download-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 12px 16px;
-            border-radius: 10px;
-            background: #ffbf00;
-            color: #111;
-            text-decoration: none;
-            font-weight: 800;
-            transition: background 0.2s ease, transform 0.2s ease;
-        }
-        .download-button:hover {
-            background: #ffd34d;
-            transform: translateY(-1px);
-        }
-        .download-category-heading {
-            grid-column: 1 / -1;
-            margin: 8px 0 0;
-            color: #ffbf00;
         }
         .product-item {
             background: rgba(255, 255, 255, 0.1);
@@ -566,152 +439,6 @@
             border: 1px solid rgba(255,255,255,0.12);
         }
 
-        .visitor-rating-section {
-            margin: 28px 0;
-            padding: 24px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 14px;
-        }
-
-        .visitor-rating-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 18px;
-        }
-
-        .visitor-rating-header h3 {
-            margin: 0;
-            color: #f9d976;
-            font-size: 1.8rem;
-        }
-
-        .visitor-rating-summary {
-            color: #fff3b0;
-            font-weight: 700;
-        }
-
-        .visitor-rating-layout {
-            display: grid;
-            grid-template-columns: minmax(280px, 420px) minmax(0, 1fr);
-            gap: 18px;
-        }
-
-        .visitor-rating-form {
-            background: rgba(9, 14, 22, 0.85);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 12px;
-            padding: 18px;
-        }
-
-        .visitor-rating-form label {
-            display: block;
-            margin-bottom: 8px;
-            color: #edf2ff;
-            font-weight: 600;
-        }
-
-        .visitor-rating-form input,
-        .visitor-rating-form select,
-        .visitor-rating-form textarea {
-            width: 100%;
-            box-sizing: border-box;
-            margin-bottom: 12px;
-            border: 1px solid rgba(255,255,255,0.14);
-            border-radius: 8px;
-            background: rgba(18, 21, 32, 0.9);
-            color: #fff;
-            padding: 10px 12px;
-            font: inherit;
-        }
-
-        .visitor-rating-form textarea {
-            min-height: 110px;
-            resize: vertical;
-        }
-
-        .visitor-rating-form button {
-            width: 100%;
-            margin-top: 4px;
-            cursor: pointer;
-        }
-
-        .visitor-rating-stars {
-            display: flex;
-            gap: 8px;
-            margin: 8px 0 14px;
-        }
-
-        .rating-button {
-            appearance: none;
-            border: 1px solid rgba(255,191,0,0.35);
-            border-radius: 8px;
-            background: rgba(255,191,0,0.08);
-            color: #7a7f8c;
-            width: 44px;
-            height: 44px;
-            font-size: 1.7rem;
-            line-height: 1;
-            cursor: pointer;
-            transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
-        }
-
-        .rating-button:hover,
-        .rating-button.is-active {
-            background: rgba(255,191,0,0.18);
-            color: #ffbf00;
-            transform: translateY(-1px);
-        }
-
-        .visitor-rating-list {
-            display: grid;
-            gap: 14px;
-        }
-
-        .rating-review {
-            background: rgba(9, 14, 22, 0.85);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 12px;
-            padding: 16px;
-            color: #edf2ff;
-        }
-
-        .rating-review-header {
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            align-items: center;
-            margin-bottom: 10px;
-            flex-wrap: wrap;
-        }
-
-        .rating-review strong {
-            color: #fff;
-        }
-
-        .rating-review .stars {
-            color: #ffbf00;
-            letter-spacing: 2px;
-        }
-
-        .rating-review p {
-            margin: 0;
-            color: #d9e3ff;
-            line-height: 1.5;
-        }
-
-        .rating-empty {
-            margin: 0;
-            color: #d9e3ff;
-            padding: 16px;
-            border: 1px dashed rgba(255,255,255,0.2);
-            border-radius: 10px;
-            background: rgba(9, 14, 22, 0.55);
-        }
-
         .sale-listings {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -764,6 +491,121 @@
             }
         }
 
+        .bysonic-journal {
+            margin: 34px 0;
+            padding: clamp(22px, 4vw, 42px);
+            border: 1px solid rgba(255, 191, 0, 0.28);
+            border-radius: 18px;
+            background: linear-gradient(145deg, #101b20, #172a2c 60%, #111820);
+            color: #f4f7f7;
+        }
+
+        .journal-header {
+            max-width: 720px;
+            margin: 0 auto 26px;
+            text-align: center;
+        }
+
+        .journal-eyebrow,
+        .journal-category {
+            color: #ffbf00;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .journal-eyebrow {
+            display: inline-block;
+            margin-bottom: 9px;
+            font-size: 0.78rem;
+        }
+
+        .journal-header h2 {
+            margin: 0 0 10px;
+            color: #fff;
+            font-size: clamp(1.7rem, 4vw, 2.4rem);
+        }
+
+        .journal-header p {
+            margin: 0;
+            color: #d1dcdd;
+            line-height: 1.7;
+        }
+
+        .journal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+            gap: 18px;
+        }
+
+        .journal-card {
+            display: flex;
+            flex-direction: column;
+            padding: 22px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 14px;
+            background: rgba(7, 14, 18, 0.74);
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .journal-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 191, 0, 0.7);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+        }
+
+        .journal-category {
+            margin: 0 0 11px;
+            font-size: 0.76rem;
+        }
+
+        .journal-card h3 {
+            margin: 0 0 10px;
+            color: #fff;
+            font-size: 1.2rem;
+            line-height: 1.35;
+        }
+
+        .journal-card > p:not(.journal-category) {
+            margin: 0 0 18px;
+            color: #d1dcdd;
+            line-height: 1.65;
+        }
+
+        .journal-link {
+            align-self: flex-start;
+            margin-top: auto;
+            padding: 9px 13px;
+            border: 1px solid rgba(255, 191, 0, 0.65);
+            border-radius: 7px;
+            color: #ffcf40;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .journal-link:hover,
+        .journal-link:focus-visible {
+            background: #ffbf00;
+            color: #161616;
+        }
+
+        .journal-contact {
+            margin: 24px 0 0;
+            color: #d1dcdd;
+            text-align: center;
+        }
+
+        .journal-contact a {
+            color: #ffcf40;
+            font-weight: 700;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .journal-card {
+                transition: none;
+            }
+        }
+
     </style>
 
 </head>
@@ -792,19 +634,17 @@
             white-space: nowrap;
         }
 
-        .homepage-heading-logo {
-            display: block;
-            width: clamp(96px, 18vw, 160px);
-            height: auto;
-            margin: 0 auto 12px;
-            border-radius: 50%;
-            object-fit: contain;
-        }
-
         .bysonic-search-form-wrapper {
             flex: 1;
             max-width: 500px;
             position: relative;
+        }
+
+        .service-guide-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 4px;
         }
 
         .bysonic-search-bar {
@@ -1023,11 +863,12 @@ document.addEventListener("DOMContentLoaded", function() {
         <section aria-labelledby="services-heading">
             <h2 id="services-heading">Computer Repair and Upgrade Services</h2>
             <p>Empire Bysonic Computing helps customers in the Southern Suburbs, Cape Town, and the Western Cape restore, maintain, and improve laptops and desktop computers. We provide hardware diagnostics, component-level troubleshooting, screen and bezel repairs, charging-port replacement, RAM and SSD upgrades, and clear repair quotations before work begins.</p>
-            <nav aria-label="Computer service guides">
+            <nav class="service-guide-nav" aria-label="Computer service guides">
                 <a class="service-button" href="screen-repairs.html">Screen Repairs</a>
                 <a class="service-button" href="diagnostics.html">Diagnostics</a>
                 <a class="service-button" href="port-repairs.html">Port Repairs</a>
                 <a class="service-button" href="upgrades.html">RAM and SSD Upgrades</a>
+                <a class="service-button" href="#bysonic-journal">Read the Bysonic Journal</a>
             </nav>
         </section>
         <div class="ad-marquee" aria-label="Current service offers">
@@ -1042,17 +883,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 <div class="ad-card" aria-hidden="true"><strong>PORT REPAIRS</strong><span>USB-C, HDMI and charging connectors</span></div>
             </div>
         </div>
-        <hr style="border: 0; height: 1px; background-color: #f1e8e6;">
-
-        <ul class="custom-menu" style="font-weight: bold;">
-            <li><a href="https://takealot.com/" target="_blank" rel="noopener noreferrer">Laptop computer</a></li>
-            <li><a href="https://amazon.com/" target="_blank" rel="noopener noreferrer">Desktop computer</a></li>
-            <li><a href="https://google.com/" target="_blank" rel="noopener noreferrer">Tablet computer</a></li>
-            <li><a href="https://takealot.com/" target="_blank" rel="noopener noreferrer">Mobile devices</a></li>
-            <li><a href="https://takealot.com/" target="_blank" rel="noopener noreferrer">Keyboard</a></li>
-        </ul>
-        <hr style="border: 0; height: 1px; background-color: #fff;">
-
         <section class="explainer-video" aria-label="How Empire Bysonic Computing helps customers">
             <div class="explainer-stage">
                 <div class="video-scene">
@@ -1074,21 +904,37 @@ document.addEventListener("DOMContentLoaded", function() {
             </div>
             <div class="explainer-progress" aria-hidden="true"></div>
         </section>
-        <section class="download-section download-tv-shell" aria-labelledby="downloads-heading">
-            <div class="download-tv-screen">
-                <div class="download-header">
-                    <div>
-                        <p class="section-kicker">Resources</p>
-                        <h3 id="downloads-heading">Downloads</h3>
-                    </div>
-                    <a class="section-badge download-section-link" href="os-downloads.html">OS Downloads</a>
-                </div>
 
-                <p id="downloads-status" role="status" aria-live="polite">Loading available downloads…</p>
-                <div class="download-grid" id="downloads-grid" data-download-type="software"></div>
+        <section class="bysonic-journal" id="bysonic-journal" aria-labelledby="journal-heading">
+            <div class="journal-header">
+                <span class="journal-eyebrow">The Bysonic Journal</span>
+                <h2 id="journal-heading">Computer care and repair guides</h2>
+                <p>In-depth, practical articles from Empire Bysonic Computing on diagnosing common problems, choosing upgrades, and caring for your laptop.</p>
             </div>
+            <div class="journal-grid">
+                <article class="journal-card">
+                    <p class="journal-category">Repair advice</p>
+                    <h3>Repair or replace? Start with a proper diagnosis</h3>
+                    <p>Learn how to weigh a computer's condition, likely repair needs, and replacement cost before making your decision.</p>
+                    <a class="journal-link" href="blog/repair-or-replace-computer.html">Read the full guide</a>
+                </article>
+
+                <article class="journal-card">
+                    <p class="journal-category">Upgrade guide</p>
+                    <h3>RAM or SSD: which upgrade could help?</h3>
+                    <p>Understand what memory and storage do, which symptoms they address, and what to check before buying parts.</p>
+                    <a class="journal-link" href="blog/ram-or-ssd-upgrade.html">Read the full guide</a>
+                </article>
+
+                <article class="journal-card">
+                    <p class="journal-category">Device care</p>
+                    <h3>Keep your laptop cool and working comfortably</h3>
+                    <p>Simple habits can help maintain airflow and comfort, and there are signs that persistent heat needs attention.</p>
+                    <a class="journal-link" href="blog/laptop-overheating-care.html">Read the full guide</a>
+                </article>
+            </div>
+            <p class="journal-contact">Need help with a device? <a href="https://wa.me/27818272643">Contact Empire Bysonic Computing on WhatsApp</a>.</p>
         </section>
-        <script src="downloads.js" defer></script>
 
         <p class="blue-color"><mark>Below is a list of service options to your needs, select for repairs or warranty to be used:</mark></p>
         
@@ -1111,58 +957,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
         <hr style="border: 0; height: 1px; background-color: #f1e8e6;"> 
 
+    <ul class="custom-menu" style="font-weight: bold;">
+    <li><a href="https://takealot.com" target="_blank" rel="noopener">Laptop computer</a></li>
+    <li><a href="https://amazon.com" target="_blank" rel="noopener">Desktop computer</a></li>
+    <li><a href="https://google.com">Tablet computer</a></li>
+    <li><a href="https://takealot.com" target="_blank" rel="noopener">Mobile devices</a></li>
+    <li><a href="https://takealot.com">Keyboard</a></li>
+</ul>
+        
         <hr style="border: 0; height: 1px; background-color: #fff;">  
-
-        <section class="visitor-rating-section" aria-labelledby="visitor-ratings-heading">
-            <div class="visitor-rating-header">
-                <h3 id="visitor-ratings-heading">Rate Your Visit</h3>
-                <div class="visitor-rating-summary">We value your feedback</div>
-            </div>
-
-            <div class="visitor-rating-layout">
-                <form class="visitor-rating-form" id="visitor-rating-form">
-                    <div>
-                        <label for="visitor-name">Your Name</label>
-                        <input id="visitor-name" name="visitor-name" type="text" placeholder="Enter your name" required>
-                    </div>
-
-                    <div>
-                        <label>How would you rate your experience?</label>
-                        <div class="visitor-rating-stars" aria-label="Choose a rating from 1 to 5 stars">
-                            <button type="button" class="rating-button" data-value="1" aria-label="1 star">★</button>
-                            <button type="button" class="rating-button" data-value="2" aria-label="2 stars">★</button>
-                            <button type="button" class="rating-button" data-value="3" aria-label="3 stars">★</button>
-                            <button type="button" class="rating-button" data-value="4" aria-label="4 stars">★</button>
-                            <button type="button" class="rating-button" data-value="5" aria-label="5 stars">★</button>
-                        </div>
-                        <input type="hidden" id="visitor-rating-value" name="visitor-rating-value" value="5" required>
-                    </div>
-
-                    <div>
-                        <label for="visitor-service">Service</label>
-                        <select id="visitor-service" name="visitor-service">
-                            <option value="Laptop Repair">Laptop Repair</option>
-                            <option value="Desktop Repair">Desktop Repair</option>
-                            <option value="Upgrade">Upgrade</option>
-                            <option value="Screen Repair">Screen Repair</option>
-                            <option value="Port Repair">Port Repair</option>
-                            <option value="Sales">Sales</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label for="visitor-comment">Your Comments</label>
-                        <textarea id="visitor-comment" name="visitor-comment" placeholder="Tell us about your experience..." required></textarea>
-                    </div>
-
-                    <button type="submit" class="led-button"><span>Submit Rating</span></button>
-                </form>
-
-                <div class="visitor-rating-list" id="visitor-rating-list" aria-live="polite">
-                    <p class="rating-empty">No ratings yet. Be the first to leave feedback.</p>
-                </div>
-            </div>
-        </section>
 
         <section class="sales-section" id="sales-section">
             <div class="sales-header">
@@ -1261,7 +1064,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <!-- Item 5 -->
             <div class="product-item">
                 <img src="./images/HD Drive.png" alt="HD Drives">
-                <a href="https://www.takealot.com/all?_sb=1&_r=1&qsearch=laptop%20hd%20drives&via=suggestions&_si=ff31a6aa978368a0d5990e1c2ecc1fc2" target="_blank" rel="noopener" class="product-link">
+                <a href="https://takealot.com" target="_blank" rel="noopener" class="product-link">
                     <p>HD Drives</p>
                 </a>
             </div>
@@ -1305,93 +1108,6 @@ document.addEventListener("DOMContentLoaded", function() {
     </main>
 
     <script>
-        const ratingForm = document.getElementById('visitor-rating-form');
-        const ratingButtons = document.querySelectorAll('.rating-button');
-        const ratingValueInput = document.getElementById('visitor-rating-value');
-        const ratingList = document.getElementById('visitor-rating-list');
-
-        const defaultRatings = [
-            {
-                name: 'Alicia P.',
-                service: 'Laptop Repair',
-                rating: 5,
-                comment: 'The team was very helpful and fixed my battery issue quickly. I appreciated the clear explanation and fair price.'
-            },
-            {
-                name: 'Mpho T.',
-                service: 'Upgrade',
-                rating: 5,
-                comment: 'I upgraded my RAM and SSD, and the performance improvement was noticeable right away. Friendly and professional.'
-            },
-            {
-                name: 'Riaan S.',
-                service: 'Screen Repair',
-                rating: 4,
-                comment: 'Quick turnaround and good communication throughout the repair process. I would return for future work.'
-            }
-        ];
-
-        function renderRatings(items) {
-            if (!items || items.length === 0) {
-                ratingList.innerHTML = '<p class="rating-empty">No ratings yet. Be the first to leave feedback.</p>';
-                return;
-            }
-
-            const average = (items.reduce((sum, item) => sum + Number(item.rating), 0) / items.length).toFixed(1);
-            ratingList.innerHTML = `
-                <div class="rating-review" style="background: rgba(255, 191, 0, 0.05); border-color: rgba(255, 191, 0, 0.35);">
-                    <div class="rating-review-header">
-                        <strong>Average rating</strong>
-                        <span class="stars">${'★'.repeat(Math.round(Number(average))) + '☆'.repeat(5 - Math.round(Number(average)))}</span>
-                    </div>
-                    <p><strong>${average}/5</strong> based on ${items.length} visitor rating${items.length > 1 ? 's' : ''}.</p>
-                </div>
-                ${items.map(item => `
-                    <article class="rating-review">
-                        <div class="rating-review-header">
-                            <strong>${item.name}</strong>
-                            <span class="stars">${'★'.repeat(Number(item.rating))}${'☆'.repeat(5 - Number(item.rating))}</span>
-                        </div>
-                        <p><strong>${item.service}</strong></p>
-                        <p style="margin-top: 8px;">${item.comment}</p>
-                    </article>
-                `).join('')}
-            `;
-        }
-
-        ratingButtons.forEach(button => {
-            button.addEventListener('click', function () {
-                const value = Number(this.dataset.value);
-                ratingValueInput.value = value;
-                ratingButtons.forEach(btn => btn.classList.toggle('is-active', Number(btn.dataset.value) <= value));
-            });
-        });
-
-        ratingForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            const name = document.getElementById('visitor-name').value.trim();
-            const service = document.getElementById('visitor-service').value;
-            const comment = document.getElementById('visitor-comment').value.trim();
-            const rating = Number(ratingValueInput.value || 5);
-
-            const review = { name: name || 'Anonymous Visitor', service, rating, comment };
-            const existing = JSON.parse(localStorage.getItem('bysonic-visitor-ratings') || 'null') || defaultRatings;
-            existing.unshift(review);
-            localStorage.setItem('bysonic-visitor-ratings', JSON.stringify(existing));
-
-            renderRatings(existing);
-            ratingForm.reset();
-            ratingValueInput.value = '5';
-            ratingButtons.forEach(btn => btn.classList.remove('is-active'));
-            ratingButtons.forEach((btn, index) => {
-                if (index < 4) btn.classList.add('is-active');
-            });
-        });
-
-        const savedRatings = JSON.parse(localStorage.getItem('bysonic-visitor-ratings') || 'null');
-        renderRatings(savedRatings || defaultRatings);
-
         const saleForm = document.getElementById('sale-form');
         const imageInput = document.getElementById('device-image');
         const imagePreview = document.getElementById('image-preview');
@@ -1500,19 +1216,6 @@ document.addEventListener("DOMContentLoaded", function() {
         <button class="chat-toggle" data-chat-toggle type="button" aria-expanded="false" aria-label="Open customer support chat">&#128172;</button>
     </aside>
     <script src="chat-widget.js" defer></script>
-    <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/6aa979ed5fa28a34476cff43/1k2j08igu';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
 </body>
 </html>
 <footer></footer>
