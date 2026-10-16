@@ -111,6 +111,18 @@ After publishing, submit the sitemap in Google Search Console:
 
 `https://empire-bysonic-computing.github.io/empire-bysonic-computing/sitemap.xml`
 
+### Weekly journal publishing
+
+The `.github/workflows/weekly-blog.yml` workflow generates one new computer-care article each Friday at 12:00 South Africa Standard Time (UTC+2), updates the Journal cards and `sitemap.xml`, and pushes the changes to `main`. GitHub Pages must be configured to publish from the `main` branch and repository root for those commits to become public. The workflow can also be run manually from the GitHub Actions tab.
+
+Before enabling it, add an OpenAI API key as a repository Actions secret named `OPENAI_API_KEY` (Repository Settings > Secrets and variables > Actions). The key is only available to the scheduled workflow; never put it in a website file, commit, or chat. OpenAI API usage may incur charges. The workflow fails rather than publishing if the API response is invalid, too short, duplicates an existing URL, or cannot be safely rendered. Generated articles are general AI-assisted information and are not independently fact-checked; readers are advised to confirm model-specific guidance with the manufacturer or a qualified technician.
+
+The workflow publishes to the website automatically; it does not automatically post to Facebook, Instagram, X, or other social accounts. Those channels were not selected or connected. The site already provides WhatsApp contact links; any future automated social posting needs the account owner's chosen platform and approved API access, with credentials stored as encrypted Actions secrets.
+
+### Search indexing and promotion
+
+The workflow updates the XML sitemap, but inclusion in a sitemap does not guarantee that Google will crawl, index, or rank a page. Verify the site in Google Search Console and submit the sitemap there. Useful original content, clear internal links, correct page metadata, and a complete Google Business Profile can support discoverability; no search position or visitor volume can be guaranteed.
+
 ## Contact
 
 Phone: `+27 81 827 2643`

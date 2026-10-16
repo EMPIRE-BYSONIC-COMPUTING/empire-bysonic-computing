@@ -1,0 +1,44 @@
+name: Publish weekly Bysonic Journal article
+
+on:
+  schedule:
+    - cron: "0 10 * * 5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly-blog
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the site
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate and publish an article
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/publish_weekly_blog.py
+
+      - name: Commit and push site updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add blog index.html sitemap.xml
+          if git diff --cached --quiet; then
+            echo "No weekly article changes to publish."
+            exit 0
+          fi
+          git commit -m "Publish weekly Bysonic Journal article"
+          git push origin HEAD:main
