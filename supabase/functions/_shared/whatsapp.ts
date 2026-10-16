@@ -6,6 +6,12 @@ function graphUrl(): string {
     return `https://graph.facebook.com/${version}/${requiredEnv("WHATSAPP_PHONE_NUMBER_ID")}/messages`;
 }
 
+function whatsappRecipient(number: string): string {
+    const digits = number.replace(/\D/g, "");
+    if (!/^[1-9][0-9]{7,14}$/.test(digits)) throw new Error("WhatsApp recipients must be valid international-format numbers.");
+    return digits;
+}
+
 export async function sendWhatsApp(payload: Record<string, unknown>): Promise<void> {
     const response = await fetch(graphUrl(), {
         method: "POST",
@@ -26,7 +32,7 @@ export async function sendText(to: string, text: string): Promise<void> {
     await sendWhatsApp({
         messaging_product: "whatsapp",
         recipient_type: "individual",
-        to,
+        to: whatsappRecipient(to),
         type: "text",
         text: { preview_url: false, body: text },
     });
@@ -36,7 +42,7 @@ export async function sendListingAlert(id: string, name: string, price: string):
     await sendWhatsApp({
         messaging_product: "whatsapp",
         recipient_type: "individual",
-        to: requiredEnv("WHATSAPP_OWNER_PHONE"),
+        to: whatsappRecipient(requiredEnv("WHATSAPP_OWNER_PHONE")),
         type: "template",
         template: {
             name: requiredEnv("WHATSAPP_ALERT_TEMPLATE"),

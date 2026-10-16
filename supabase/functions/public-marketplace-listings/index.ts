@@ -46,7 +46,10 @@ Deno.serve(async (request: Request) => {
             }
             const signed = await signResponse.json() as { signedURL?: string };
             if (typeof signed.signedURL !== "string") throw new Error("Storage returned an invalid signed image URL.");
-            imageUrl = new URL(signed.signedURL, `${url}/storage/v1/`).toString();
+            const signedPath = signed.signedURL.startsWith("/")
+                ? signed.signedURL
+                : `/${signed.signedURL}`;
+            imageUrl = new URL(`/storage/v1${signedPath}`, `${url}/`).toString();
         }
 
         return {

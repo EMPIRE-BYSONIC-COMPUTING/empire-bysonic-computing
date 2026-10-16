@@ -412,6 +412,36 @@
             min-height: 90px;
             resize: vertical;
         }
+        .sale-form-status,
+        .sale-listings-status {
+            color: #e8fbff;
+            line-height: 1.5;
+        }
+        .sale-form-status[data-state="error"],
+        .sale-listings-status[data-state="error"] {
+            color: #ffd0d0;
+        }
+        .sale-form button:disabled {
+            cursor: not-allowed;
+            opacity: 0.65;
+        }
+        .sale-privacy-note {
+            margin: 12px 0;
+            color: #e8fbff;
+            line-height: 1.5;
+        }
+        .sale-consent {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+            margin: 12px 0;
+            color: #e8fbff;
+            line-height: 1.45;
+        }
+        .sale-consent input {
+            width: auto;
+            margin-top: 4px;
+        }
 
         .sale-form button {
             background: linear-gradient(135deg, #ffa800, #ffbf00);
@@ -623,14 +653,25 @@
 
                     <div style="margin-top: 12px;">
                         <label for="device-image">Upload Device Image</label>
-                        <input id="device-image" name="device-image" type="file" accept="image/*">
+                        <input id="device-image" name="device-image" type="file" accept="image/jpeg,image/png,image/webp">
                         <img id="image-preview" class="image-preview" alt="Device preview">
                     </div>
 
+                    <p class="sale-privacy-note">Submissions are reviewed before publication. Your WhatsApp number is private and is not shown on the listing.</p>
+                    <div>
+                        <label for="seller-whatsapp">Your WhatsApp number</label>
+                        <input id="seller-whatsapp" name="seller-whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="e.g. +27821234567" pattern="^\+[1-9][0-9]{7,14}$" required>
+                    </div>
+                    <label class="sale-consent" for="seller-contact-consent">
+                        <input id="seller-contact-consent" name="seller-contact-consent" type="checkbox" required>
+                        <span>I agree that Empire Bysonic Computing may contact me on WhatsApp about this listing. My number will remain private from the public listing.</span>
+                    </label>
+                    <p class="sale-form-status" id="sale-form-status" role="status" aria-live="polite"></p>
                     <button type="submit">Add Device for Sale</button>
                 </form>
 
                 <div>
+                    <p class="sale-listings-status" id="sale-listings-status" role="status" aria-live="polite">Loading approved listings…</p>
                     <div class="sale-listings" id="sale-listings"></div>
                 </div>
             </div>
@@ -716,101 +757,8 @@
         </div>
     </main>
 
-    <script>
-        const saleForm = document.getElementById('sale-form');
-        const imageInput = document.getElementById('device-image');
-        const imagePreview = document.getElementById('image-preview');
-        const saleListings = document.getElementById('sale-listings');
-
-        const defaultListings = [
-            {
-                name: 'Dell Latitude 7480',
-                condition: 'Refurbished',
-                price: 'R4,500',
-                category: 'Laptop',
-                description: 'Core i5, 16GB RAM, 256GB SSD, clean refurbished unit with battery tested.',
-                image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=900&q=80'
-            },
-            {
-                name: 'Mini PC Kit',
-                condition: 'New',
-                price: 'R6,800',
-                category: 'Mini PC',
-                description: 'Compact workstation with 8GB RAM, 512GB NVMe and Wi-Fi support.',
-                image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80'
-            },
-            {
-                name: 'Apple iPad 9th Gen',
-                condition: 'Second Hand',
-                price: 'R3,200',
-                category: 'Tablet',
-                description: 'Good cosmetic condition, full tested, includes charger and case.',
-                image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=900&q=80'
-            }
-        ];
-
-        function renderListings(items) {
-            saleListings.innerHTML = items.map(item => `
-                <article class="sale-item">
-                    <img src="${item.image}" alt="${item.name}">
-                    <div class="sale-item-body">
-                        <div class="sale-item-meta">
-                            <span>${item.category}</span>
-                            <span>${item.price}</span>
-                        </div>
-                        <h4>${item.name}</h4>
-                        <div class="sale-item-meta" style="font-size: 0.8rem; color: #d8e3ff; margin-bottom: 0;">
-                            <span>${item.condition}</span>
-                        </div>
-                        <p>${item.description}</p>
-                    </div>
-                </article>
-            `).join('');
-        }
-
-        imageInput.addEventListener('change', function () {
-            const file = this.files && this.files[0];
-            if (!file) {
-                imagePreview.style.display = 'none';
-                imagePreview.src = '';
-                return;
-            }
-
-            const reader = new FileReader();
-            reader.onload = function (event) {
-                imagePreview.src = event.target.result;
-                imagePreview.style.display = 'block';
-            };
-            reader.readAsDataURL(file);
-        });
-
-        saleForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            const name = document.getElementById('device-name').value.trim();
-            const condition = document.getElementById('device-condition').value;
-            const price = document.getElementById('device-price').value.trim();
-            const category = document.getElementById('device-category').value;
-            const description = document.getElementById('device-description').value.trim();
-
-            const file = imageInput.files && imageInput.files[0];
-            const image = file ? URL.createObjectURL(file) : 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=900&q=80';
-
-            const listing = { name, condition, price, category, description, image };
-
-            const existing = JSON.parse(localStorage.getItem('bysonic-sales-listings') || 'null') || defaultListings;
-            existing.unshift(listing);
-            localStorage.setItem('bysonic-sales-listings', JSON.stringify(existing));
-
-            renderListings(existing);
-            saleForm.reset();
-            imagePreview.style.display = 'none';
-            imagePreview.src = '';
-        });
-
-        const savedListings = JSON.parse(localStorage.getItem('bysonic-sales-listings') || 'null');
-        renderListings(savedListings || defaultListings);
-    </script>
+    <script src="marketplace-config.js" defer></script>
+    <script src="marketplace.js" defer></script>
     <aside class="chat-widget" aria-label="Customer support assistant">
         <section class="chat-panel" data-chat-panel hidden>
             <div class="chat-header">Bysonic Support</div>

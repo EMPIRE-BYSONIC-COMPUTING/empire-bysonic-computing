@@ -13,7 +13,7 @@ create table if not exists public.marketplace_listings (
 );
 
 alter table public.marketplace_listings enable row level security;
-revoke all on public.marketplace_listings from anon, authenticated;
+revoke all on public.marketplace_listings from public, anon, authenticated;
 grant all on public.marketplace_listings to service_role;
 
 create table if not exists public.marketplace_submission_rate_limits (
