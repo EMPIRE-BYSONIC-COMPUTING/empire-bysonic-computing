@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Download application software and guides provided by Empire Bysonic Computing.">
-    <title>Software Downloads | Empire Bysonic Computing</title>
+    <meta name="description" content="Official Windows software and model-specific driver resources from Empire Bysonic Computing.">
+    <title>Software &amp; Driver Downloads | Empire Bysonic Computing</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body.software-download-page {
@@ -109,9 +109,11 @@
                 <p class="software-download-note">
                     For sound, Wi-Fi, Ethernet, Bluetooth, graphics, and touchpad drivers, start with the laptop
                     manufacturer's support page and select the exact model and Windows version. A single driver
-                    installer cannot safely support every computer. This page links to vendor sources; it does
-                    not mirror installers. Avoid third-party driver bundles and don't install drivers for a
-                    different model. For most devices, check Windows Update before manually installing drivers.
+                    installer cannot safely support every computer. The curated links go to vendor sources and
+                    do not copy vendor installers. Any separately listed repository-hosted files are published
+                    by this site and should only be shared when redistribution is permitted. Avoid third-party
+                    driver bundles and don't install drivers for a different model. For most devices, check
+                    Windows Update before manually installing drivers.
                 </p>
                 <p class="software-download-note">
                     Depending on the device, drivers may also be needed for the chipset, webcam, card reader,
@@ -183,6 +185,11 @@
                         <h2>Windows Update</h2>
                         <p>Check Windows Update first for compatible drivers selected for your computer.</p>
                         <a class="download-button" href="https://support.microsoft.com/en-us/windows" target="_blank" rel="noopener noreferrer">Browse Microsoft Windows help</a>
+                    </article>
+                    <article class="download-page-card">
+                        <h2>DriverPack</h2>
+                        <p>DriverPack offers driver tools from its publisher. Prefer the computer manufacturer's drivers first, confirm the exact device and Windows version, and review every installer screen and bundled offer. This site links to DriverPack's publisher page but does not mirror its package.</p>
+                        <a class="download-button" href="https://driverpack.io/en" target="_blank" rel="noopener noreferrer">Visit DriverPack's official site</a>
                     </article>
                     <article class="download-page-card">
                         <h2>Intel Driver &amp; Support Assistant</h2>
@@ -257,8 +264,13 @@
                     </article>
                     <article class="download-page-card">
                         <h2>7-Zip</h2>
-                        <p>File archiver for opening and creating ZIP and other archive formats.</p>
-                        <a class="download-button" href="https://www.7-zip.org/" target="_blank" rel="noopener noreferrer">Get 7-Zip from its publisher</a>
+                        <p>File archiver for opening and creating ZIP and other archive formats. These unmodified 7-Zip 26.04 installers are hosted under the publisher's redistribution terms. Choose the installer matching your Windows device architecture. The installers are not Authenticode-signed; verify the SHA-256 against the official release metadata before running.</p>
+                        <a class="download-button" href="downloads/Software/7-Zip/7z2604-x64.exe" download>Download 7-Zip for 64-bit Windows (x64)</a>
+                        <a class="download-button" href="downloads/Software/7-Zip/7z2604-arm64.exe" download>Download 7-Zip for Windows ARM64</a>
+                        <p>SHA-256 (x64): <code>d54bf805f9f3704d1e8db2fa3498ae7ef2df0312b40b558e7c71c734430a665d</code></p>
+                        <p>SHA-256 (ARM64): <code>d4117b95495b0e925334ae7b5bddf2853513274603de15dee6acf03999fbc09c</code></p>
+                        <a href="https://github.com/ip7z/7zip/releases/tag/26.04" target="_blank" rel="noopener noreferrer">Verify the official 7-Zip 26.04 release</a>
+                        <a href="downloads/Software/7-Zip/7-Zip-26.04-LICENSE.txt">7-Zip license and redistribution notices</a>
                     </article>
                     <article class="download-page-card">
                         <h2>VLC media player</h2>
