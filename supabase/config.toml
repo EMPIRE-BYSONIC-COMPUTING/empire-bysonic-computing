@@ -1,0 +1,8 @@
+[functions.submit-marketplace-listing]
+verify_jwt = false
+
+[functions.public-marketplace-listings]
+verify_jwt = false
+
+[functions.whatsapp-marketplace-webhook]
+verify_jwt = false
