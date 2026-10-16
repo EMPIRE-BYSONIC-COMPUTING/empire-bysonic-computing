@@ -1,4 +1,4 @@
-import { jsonResponse, requiredEnv, responseError, serviceFetch } from "../_shared/http.ts";
+import { requiredEnv, responseError, serviceFetch } from "../_shared/http.ts";
 import { sendText } from "../_shared/whatsapp.ts";
 
 function bytesToHex(bytes: Uint8Array): string {

@@ -129,6 +129,16 @@
         event.preventDefault();
         if (!form.reportValidity()) return;
 
+        const imageFile = imageInput.files && imageInput.files[0];
+        if (imageFile && imageFile.size > 4 * 1024 * 1024) {
+            setStatus(formStatus, "Images must be 4 MB or smaller.", "error");
+            return;
+        }
+        if (imageFile && !["image/jpeg", "image/png", "image/webp"].includes(imageFile.type)) {
+            setStatus(formStatus, "Upload a JPEG, PNG, or WebP image.", "error");
+            return;
+        }
+
         submitButton.disabled = true;
         setStatus(formStatus, "Sending your listing for review…");
         try {
