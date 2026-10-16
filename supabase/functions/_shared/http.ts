@@ -20,10 +20,10 @@ export function corsHeaders(request: Request): HeadersInit {
     return headers;
 }
 
-export function jsonResponse(request: Request, status: number, body: unknown): Response {
+export function jsonResponse(request: Request, status: number, body: unknown, cacheControl = "no-store"): Response {
     return new Response(JSON.stringify(body), {
         status,
-        headers: { ...corsHeaders(request), "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" },
+        headers: { ...corsHeaders(request), "Content-Type": "application/json; charset=utf-8", "Cache-Control": cacheControl },
     });
 }
 

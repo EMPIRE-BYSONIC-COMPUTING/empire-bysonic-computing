@@ -617,7 +617,7 @@
                     <div class="form-row">
                         <div>
                             <label for="device-name">Device Name</label>
-                            <input id="device-name" name="device-name" type="text" placeholder="e.g. Dell Latitude 7480" required>
+                            <input id="device-name" name="device-name" type="text" maxlength="100" placeholder="e.g. Dell Latitude 7480" required>
                         </div>
                         <div>
                             <label for="device-condition">Condition</label>
@@ -632,7 +632,7 @@
                     <div class="form-row">
                         <div>
                             <label for="device-price">Price</label>
-                            <input id="device-price" name="device-price" type="text" placeholder="e.g. R4,500" required>
+                            <input id="device-price" name="device-price" type="text" maxlength="80" placeholder="e.g. R4,500" required>
                         </div>
                         <div>
                             <label for="device-category">Category</label>
@@ -648,11 +648,11 @@
 
                     <div>
                         <label for="device-description">Description</label>
-                        <textarea id="device-description" name="device-description" placeholder="Add details, specs, warranty, or condition notes..." required></textarea>
+                        <textarea id="device-description" name="device-description" maxlength="2000" placeholder="Add details, specs, warranty, or condition notes..." required></textarea>
                     </div>
 
                     <div style="margin-top: 12px;">
-                        <label for="device-image">Upload Device Image</label>
+                        <label for="device-image">Upload Device Image (JPEG, PNG or WebP; max 4 MB)</label>
                         <input id="device-image" name="device-image" type="file" accept="image/jpeg,image/png,image/webp">
                         <img id="image-preview" class="image-preview" alt="Device preview">
                     </div>
@@ -660,7 +660,7 @@
                     <p class="sale-privacy-note">Submissions are reviewed before publication. Your WhatsApp number is private and is not shown on the listing.</p>
                     <div>
                         <label for="seller-whatsapp">Your WhatsApp number</label>
-                        <input id="seller-whatsapp" name="seller-whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="e.g. +27821234567" pattern="^\+[1-9][0-9]{7,14}$" required>
+                        <input id="seller-whatsapp" name="seller-whatsapp" type="tel" inputmode="tel" autocomplete="tel" maxlength="16" placeholder="e.g. +27821234567" pattern="^\+[1-9][0-9]{7,14}$" required>
                     </div>
                     <label class="sale-consent" for="seller-contact-consent">
                         <input id="seller-contact-consent" name="seller-contact-consent" type="checkbox" required>

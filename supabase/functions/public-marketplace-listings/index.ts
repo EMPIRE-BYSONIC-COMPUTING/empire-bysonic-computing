@@ -32,36 +32,45 @@ Deno.serve(async (request: Request) => {
 
     const rows = await response.json() as Listing[];
     const { url } = supabaseConfig();
-    const listings = await Promise.all(rows.map(async (row) => {
-        let imageUrl: string | null = null;
-        if (row.image_path) {
-            const signResponse = await serviceFetch(`/storage/v1/object/sign/sale-listing-images/${row.image_path}`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ expiresIn: 3600 }),
-            });
-            if (!signResponse.ok) {
-                console.error("Could not create a listing image URL:", await responseError(signResponse));
-                throw new Error("Could not load an approved listing image.");
+    try {
+        const listings = await Promise.all(rows.map(async (row) => {
+            let imageUrl: string | null = null;
+            if (row.image_path) {
+                const signResponse = await serviceFetch(`/storage/v1/object/sign/sale-listing-images/${row.image_path}`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ expiresIn: 3600 }),
+                });
+                if (!signResponse.ok) {
+                    console.error("Could not create a listing image URL:", await responseError(signResponse));
+                    throw new Error("Could not load an approved listing image.");
+                }
+                const signed = await signResponse.json() as { signedURL?: string };
+                if (typeof signed.signedURL !== "string") throw new Error("Storage returned an invalid signed image URL.");
+                if (signed.signedURL.startsWith("http")) {
+                    const signedUrl = new URL(signed.signedURL);
+                    if (signedUrl.origin !== new URL(url).origin) throw new Error("Storage returned an unexpected image host.");
+                    imageUrl = signedUrl.toString();
+                } else {
+                    const signedPath = signed.signedURL.startsWith("/") ? signed.signedURL : `/${signed.signedURL}`;
+                    imageUrl = new URL(`/storage/v1${signedPath}`, `${url}/`).toString();
+                }
             }
-            const signed = await signResponse.json() as { signedURL?: string };
-            if (typeof signed.signedURL !== "string") throw new Error("Storage returned an invalid signed image URL.");
-            const signedPath = signed.signedURL.startsWith("/")
-                ? signed.signedURL
-                : `/${signed.signedURL}`;
-            imageUrl = new URL(`/storage/v1${signedPath}`, `${url}/`).toString();
-        }
 
-        return {
-            id: row.id,
-            name: row.name,
-            condition: row.condition,
-            price: row.price,
-            category: row.category,
-            description: row.description,
-            image_url: imageUrl,
-        };
-    }));
+            return {
+                id: row.id,
+                name: row.name,
+                condition: row.condition,
+                price: row.price,
+                category: row.category,
+                description: row.description,
+                image_url: imageUrl,
+            };
+        }));
 
-    return jsonResponse(request, 200, { listings });
+        return jsonResponse(request, 200, { listings }, "public, max-age=60");
+    } catch (error) {
+        console.error("Could not prepare approved listings:", error);
+        return jsonResponse(request, 502, { error: "Approved listings could not be loaded." });
+    }
 });
